@@ -1,0 +1,1611 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Forward · KPMG × Spiralia</title>
+<meta name="description" content="Briefing de servicios de Spiralia para KPMG: del aula al trabajo real con el método SPIRAL.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preload" href="assets/fonts/OpenSans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* AI Forward · KPMG × Spiralia · Briefing de servicios (sobre el motor visual de la propuesta AImagine de ING) */
+@font-face{font-family:"Open Sans";font-style:normal;font-weight:300 800;font-stretch:75% 100%;font-display:swap;src:url(assets/fonts/OpenSans-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Open Sans";font-style:normal;font-weight:300 800;font-stretch:75% 100%;font-display:swap;src:url(assets/fonts/OpenSans-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+/* Identidad digital actual de KPMG (kpmg.com, consultada el 6-oct-2026) */
+:root{
+  --navy:#0c233c;--blue:#00338d;--cobalt:#1e49e2;--pacific:#00b8f5;--sky:#76d2ff;--ice:#aceaff;--mint:#63ebda;--purple:#7213ea;
+  --light:#f5f6fa;--ink:#1b2a3d;--muted:#5b6577;--line:rgba(12,35,60,.16);
+  --head:var(--navy);--accent:var(--cobalt);--tagc:var(--cobalt);--soft:rgba(30,73,226,.07);--card:#fff;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --font-question:clamp(46px,5.3vw,86px);--font-title:clamp(34px,3.3vw,54px);--font-sub:26px;--font-body:19px;--font-small:16px;--font-label:12px;--font-footer:11px;
+  --head-gap:30px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Open Sans",Arial,Helvetica,sans-serif;color:var(--ink);background:var(--light);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3,p,ol,ul,figure,blockquote{margin:0}
+ol,ul{padding:0;list-style:none}
+h1,h2{font-weight:700;font-stretch:87.5%;letter-spacing:-.015em;line-height:1.06;color:var(--head);text-wrap:balance}
+h2{font-size:var(--font-title)}
+h3{font-size:var(--font-sub);font-weight:700;font-stretch:87.5%;line-height:1.15;color:var(--head)}
+p,li{font-size:var(--font-body);line-height:1.45}
+em{color:var(--accent);font-style:normal}
+b,strong{font-weight:700}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--pacific);outline-offset:4px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Navegación */
+#nav{height:70px;position:fixed;z-index:10;inset:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 3vw;background:#fff;border-bottom:1px solid #e1e6ee}
+.brands{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.brands img{display:block;height:24px;width:auto}.brands img.spi{height:34px}
+.brands span{color:#9aa3b2}
+#nav nav{display:flex;gap:22px;font-size:13px}
+#nav nav a{position:relative;color:var(--muted);white-space:nowrap}
+#nav nav a[aria-current]{color:var(--navy);font-weight:700}
+#nav nav a[aria-current]:after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:2px;background:var(--cobalt)}
+.controls{display:flex;gap:8px;flex-shrink:0}
+.controls button{background:none;border:1px solid #c9d0db;border-radius:50%;width:30px;height:30px;color:var(--navy);font-size:13px;display:grid;place-items:center;padding:0}
+.controls button:disabled{opacity:.3;cursor:default}
+.controls #motion{width:auto;padding:0 11px;border-radius:16px;font-size:11px;white-space:nowrap}
+.controls #replay{font-size:17px}
+#progress{position:absolute;bottom:-1px;left:0;height:3px;width:0;background:var(--cobalt);transition:width .3s}
+
+/* Diapositivas y fondos */
+.slide{position:relative;min-height:100svh;padding:112px 6vw 86px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:var(--light)}
+.white{background:#fff;--card:var(--light)}
+.dark{background:var(--navy);color:#e8edf5;--head:#fff;--accent:var(--sky);--tagc:var(--mint);--muted:#aeb9cb;--line:rgba(255,255,255,.18);--soft:rgba(118,210,255,.08)}
+.cobalt{background:var(--cobalt);color:#fff;--head:#fff;--accent:var(--mint);--tagc:var(--ice);--muted:#d6defb;--line:rgba(255,255,255,.3);--soft:rgba(255,255,255,.08)}
+.slide-head{margin-bottom:var(--head-gap);max-width:1420px;position:relative}
+.tag{display:block;font-size:var(--font-label);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--tagc);margin-bottom:14px}
+.claim{font-size:clamp(19px,1.5vw,23px);line-height:1.32;font-weight:600;color:var(--head);margin-top:12px;max-width:1150px}
+.intro{font-size:20px;line-height:1.45;max-width:1120px;margin-bottom:26px}
+.body-content{position:relative}
+.closing-line{border-top:1px solid var(--line);padding-top:16px;margin-top:26px;font-size:21px;line-height:1.38;max-width:1250px}
+.footer{position:absolute;bottom:22px;left:6vw;right:6vw;display:flex;justify-content:space-between;gap:24px;border-top:1px solid var(--line);padding-top:10px;font-size:var(--font-footer);color:var(--muted)}
+.footer>span:first-child{max-width:88%}
+.page{white-space:nowrap}
+.print-brand{display:none}
+.chip{display:inline-flex;align-items:center;font-size:13px;font-weight:700;border-radius:999px;padding:4px 11px;border:1px solid var(--line);white-space:nowrap}
+
+/* Entrada de elementos: solo con JS y movimiento activo; si no, todo se ve quieto */
+@media screen and (min-width:721px){.anim .slide:not(.seen) .slide-head,.anim .slide:not(.seen) .body-content{opacity:0}}
+@media screen{
+  .slide.is-active:not(.question) .slide-head{animation:element-in .8s var(--ease) both}
+  .slide.is-active .body-content{animation:element-in .85s .12s var(--ease) both}
+  .slide.is-active .reveal{animation:element-in .85s var(--ease) both;animation-delay:var(--delay,.15s)}
+}
+@keyframes element-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes fade-in{from{opacity:0}}
+@keyframes draw{from{stroke-dashoffset:1}}
+@keyframes grow-y{from{transform:scaleY(0)}}
+@keyframes grow-x{from{transform:scaleX(0)}}
+@keyframes pop{from{opacity:0;transform:scale(.4)}}
+.motion-paused *,.motion-paused *:before,.motion-paused *:after{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* 01 · Portada: el vídeo ocupa la pantalla y el claim aparece al terminar */
+.portada{height:100svh;min-height:0;padding:70px 0 0;background:var(--light)}
+.portada .scene-media{position:absolute;inset:70px 0 0;background:#eff0f4;transition:background .4s}
+.portada.playing .scene-media{background:#0e141b}
+.portada .scene-media img,.portada .scene-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.cover-frame{position:absolute;top:70px;left:0;right:0;bottom:0;display:grid;place-items:center;pointer-events:none;z-index:1}
+.cover-frame>div{position:relative;width:min(100%,calc((100svh - 70px) * 16 / 9));aspect-ratio:16/9;container-type:inline-size}
+.cover-claim{position:absolute;top:49.5%;left:0;right:0;text-align:center;font-size:2.5cqw;font-weight:600;letter-spacing:-.01em;color:var(--navy);opacity:0;transform:translateY(10px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.cover-claim em{color:var(--cobalt)}
+.portada.ended .cover-claim,.motion-paused .portada .cover-claim{opacity:1;transform:none}
+.motion-paused .portada video{visibility:hidden}
+.cover-next{position:absolute;bottom:24px;right:3vw;z-index:2;background:#fff;border:1px solid #0c233c30;border-radius:30px;padding:10px 22px;font-size:14px;color:var(--navy);white-space:nowrap}
+.cover-next span{margin-left:18px;color:var(--cobalt)}
+
+/* Preguntas que abren capítulo */
+.question{padding-left:10vw;padding-right:8vw}
+.question .tag{margin-bottom:34px}
+.question h2{font-size:var(--font-question);line-height:1.02;letter-spacing:-.025em;max-width:1300px}
+.question .w{display:inline-block}
+.question-answer{font-size:clamp(20px,1.7vw,26px);line-height:1.35;max-width:1050px;margin-top:30px}
+@media screen{.question.is-active .w{animation:word-in .75s var(--ease) both;animation-delay:calc(var(--i) * 65ms + .1s)}.question.is-active .question-answer{animation:element-in .8s var(--ease) both;animation-delay:var(--after,1.2s)}}
+@keyframes word-in{from{opacity:0;transform:translateY(.35em)}}
+.qmark{position:absolute;right:5vw;bottom:-6vw;font-size:42vw;line-height:1;font-weight:800;font-stretch:75%;color:rgba(255,255,255,.07);pointer-events:none;user-select:none}
+
+/* 02 · El golpe */
+.big-contrast{display:grid;grid-template-columns:1fr .8fr 1fr;align-items:center;gap:40px;max-width:1250px}
+.big-contrast strong{display:block;font-size:clamp(100px,11vw,176px);font-weight:700;font-stretch:75%;letter-spacing:-.04em;line-height:.95;color:var(--navy)}
+.big-contrast strong span{font-size:.5em;letter-spacing:0}
+.big-contrast p{margin-top:12px;font-size:18px;max-width:300px}
+.gap{color:var(--cobalt);border-top:1px solid;border-bottom:1px solid;padding:22px 0;transform-origin:left}
+.gap span{display:block;font-size:15px}.gap b{display:block;font-size:36px;font-stretch:87.5%;line-height:1.15}
+.slide.is-active .gap{animation:grow-x 1.1s var(--ease) .35s both}
+.punchline{font-size:clamp(26px,2.4vw,38px);line-height:1.16;letter-spacing:-.015em;font-weight:700;font-stretch:87.5%;color:var(--navy);margin-top:38px;max-width:1150px}
+.six-note{font-size:20px;margin-top:14px;max-width:1100px}
+
+/* 04 · La misma IA, distinto resultado */
+.diverge{display:grid;grid-template-columns:1.35fr 1fr;gap:5vw;align-items:center}
+.dv-svg{display:block;width:100%;height:auto;max-height:52vh;overflow:visible}
+.dv-line{fill:none;stroke:#b9c4d6;stroke-width:2;stroke-dasharray:1}
+.dv-model{fill:var(--cobalt)}
+.dv-co{fill:var(--navy)}
+.dv-bar{fill:#c9d2e2;transform-box:fill-box;transform-origin:50% 100%}
+.dv-bar.hi{fill:var(--cobalt)}
+.dv-svg text{font-family:"Open Sans",Arial,sans-serif;font-size:15px;fill:var(--muted)}
+.dv-svg .lbl-model{font-size:17px;font-weight:700;fill:var(--navy)}
+.dv-svg .lbl-hi{font-size:16px;font-weight:700;fill:var(--cobalt)}
+.dv-svg .axis{stroke:#9aa6b8;stroke-width:1.5}
+.slide.is-active .dv-line{animation:draw .9s var(--ease) both;animation-delay:var(--d)}
+.slide.is-active .dv-model,.slide.is-active .dv-co{transform-box:fill-box;transform-origin:center;animation:pop .6s var(--ease) both;animation-delay:var(--d)}
+.slide.is-active .dv-bar{animation:grow-y 1s var(--ease) both;animation-delay:var(--d)}
+.slide.is-active .dv-fade{animation:fade-in .8s ease both;animation-delay:var(--d)}
+.dims{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.dims .chip{font-size:14px;color:var(--navy);background:#fff;border-color:#0c233c30;padding:7px 14px}
+.share{border-top:1px solid var(--line);padding-top:16px}
+.share-row{display:grid;grid-template-columns:110px auto 1fr;gap:14px;align-items:center;padding:7px 0}
+.share-row small{font-size:13px;font-weight:700;color:var(--navy)}
+.share-row .dots{display:flex;gap:5px}
+.share-row .dots i{width:20px;height:20px;border-radius:4px;background:#d6dde9}
+.share-row .dots i.on{background:var(--cobalt)}
+.share-row span{font-size:15px;color:var(--muted)}
+.share p{font-size:17px;margin-top:12px}
+
+/* 06 · Procedimiento frente a trabajo real */
+.real-stage{position:relative;height:clamp(290px,40vh,400px);margin:0 0 6px}
+.real-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.real-lines path{fill:none;stroke:#9aa6b8;stroke-width:1.4;stroke-dasharray:1;opacity:.85}
+.real-lines .clean{stroke:var(--navy);stroke-width:2.5;stroke-dasharray:none}
+.slide.is-active .real-lines .mess-line{animation:draw 1.6s ease both;animation-delay:var(--d,1.6s)}
+.real-label{position:absolute;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.proc-step,.mess{position:absolute;left:calc(var(--x) * 1%);top:calc(var(--y) * 1%);translate:-50% -50%;white-space:nowrap}
+.proc-step{background:var(--navy);color:#fff;font-size:16px;font-weight:700;padding:10px 20px;border-radius:4px}
+.mess{background:#fff;border:1px solid #0c233c26;color:var(--ink);font-size:14px;padding:6px 12px;border-radius:999px;box-shadow:0 2px 8px #0c233c12}
+.mess.warn{border-color:var(--cobalt);color:var(--cobalt);font-weight:700}
+.reality-copy{display:grid;grid-template-columns:1fr 1fr;gap:5vw;border-top:1px solid var(--line);padding-top:16px}
+.reality-copy p{font-size:18px}
+.reality-copy b{color:var(--navy)}
+
+/* 07 · Dos formas de ayudar, un solo recorrido */
+.route{display:grid;grid-template-columns:1fr 2.3fr;column-gap:3vw}
+.leg{grid-row:1;padding:0 0 26px}
+.leg small{font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--cobalt)}
+.leg h3{font-size:clamp(26px,2.3vw,36px);margin:8px 0 10px}
+.leg p{font-size:17px;line-height:1.42}
+.leg .eg{margin-top:12px;font-size:15px;color:var(--muted);border-left:2px solid var(--cobalt);padding-left:12px}
+.route-line{grid-column:1/-1;grid-row:2;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--navy) 0%,var(--cobalt) 30%,var(--pacific) 75%,var(--mint) 100%);transform-origin:left}
+.slide.is-active .route-line{animation:grow-x 1.8s var(--ease) .2s both}
+.route-stops{grid-row:3;display:grid;gap:8px;padding-top:4px}
+.route-stops.g1{grid-column:1;grid-template-columns:1fr}
+.route-stops.g2{grid-column:2;grid-template-columns:repeat(5,1fr)}
+.stop{position:relative;padding-top:24px}
+.stop:before{content:"";position:absolute;top:-15px;left:0;width:24px;height:24px;border-radius:50%;background:var(--light);border:4px solid var(--cobalt);box-sizing:border-box}
+.stop b{display:block;font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--cobalt)}
+.stop span{display:block;font-size:15px;font-weight:700;line-height:1.25;color:var(--navy);margin-top:3px;padding-right:8px}
+.route-note{font-size:16px;color:var(--muted);margin-top:16px}.route-note b{color:var(--navy)}
+.slide.is-active .stop{animation:element-in .6s var(--ease) both;animation-delay:var(--d)}
+.route-foot{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:baseline;margin-top:30px;padding:15px 20px;border-left:4px solid var(--cobalt);background:var(--soft);max-width:1250px}
+.route-foot b{font-size:12px;letter-spacing:.1em;color:var(--cobalt);text-transform:uppercase}
+.route-foot p{font-size:18px;color:var(--navy)}
+
+/* 09 · Los dos mundos */
+.fde-def{font-size:20px;max-width:1150px;margin-bottom:30px}
+.fde-def b{color:var(--navy)}
+.worlds{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:0;max-width:1150px}
+.world small{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--muted);margin-bottom:12px}
+.world li{font-size:22px;font-weight:600;color:var(--navy);padding:5px 0}
+.world.left{text-align:right;padding-right:26px;border-right:2px solid var(--line)}
+.world.right{padding-left:26px;border-left:2px solid var(--line)}
+.fde-node{position:relative;margin:0 26px;width:190px;height:190px;border-radius:50%;background:var(--cobalt);color:#fff;display:grid;place-content:center;text-align:center;box-shadow:0 0 0 12px #1e49e214,0 0 0 26px #1e49e20a}
+.fde-node b{font-size:54px;font-weight:800;font-stretch:75%;line-height:1}
+.fde-node span{font-size:12px;line-height:1.3;margin-top:6px;padding:0 20px}
+.slide.is-active .world.left li{animation:from-left .7s var(--ease) both;animation-delay:calc(var(--i) * 80ms + .25s)}
+.slide.is-active .world.right li{animation:from-right .7s var(--ease) both;animation-delay:calc(var(--i) * 80ms + .25s)}
+.slide.is-active .fde-node{animation:pop .8s var(--ease) 1s both}
+@keyframes from-left{from{opacity:0;transform:translateX(-40px)}}
+@keyframes from-right{from{opacity:0;transform:translateX(40px)}}
+.worlds-note{font-size:15px;color:var(--muted);margin-top:14px;max-width:1150px;text-align:center}
+
+/* 11 · Nube en motion: del ruido al método */
+.kw-stage{position:relative;display:grid;gap:2px;margin-top:2px}
+.kw-rung{display:grid;grid-template-columns:230px 1fr;gap:20px;align-items:center;border-top:1px solid var(--line);padding:6px 0;transition:border-color .7s}
+.kw-label{transition:opacity .7s}
+.kw-label b{display:block;font-size:15px;color:var(--navy)}
+.kw-label b i{font-style:normal;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:4px;background:var(--cobalt);color:#fff;font-size:14px;margin-right:8px}
+.kw-label span{font-size:13px;color:var(--muted);margin-left:32px}
+.kw-chips{display:flex;flex-wrap:wrap;gap:7px}
+.kw{position:relative;z-index:1;border:1px solid #0c233c33;background:#fff;color:var(--navy);font-weight:700;font-size:15px;line-height:1.2;padding:6px 12px;border-radius:999px;transform-origin:center;transition:background .5s,border-color .5s,color .5s}
+.kw span{display:inline-block}
+.kw:hover,.kw:focus-visible,.kw.on{background:var(--cobalt);border-color:var(--cobalt);color:#fff;z-index:2}
+.kw-stage[data-state=cloud] .kw-label{opacity:0}
+.kw-stage[data-state=cloud] .kw-rung{border-color:transparent}
+.kw-stage[data-state=cloud] .kw{background:transparent;border-color:transparent}
+.kw-stage[data-state=cloud] .kw:nth-child(3n+1){color:var(--cobalt)}
+.kw-stage[data-state=cloud] .kw:nth-child(4n+2){color:var(--purple)}
+.kw-stage[data-state=cloud] .kw span{animation:kw-float 4.8s ease-in-out infinite alternate;animation-delay:calc(var(--n,0) * -.7s)}
+.kw-stage[data-state=cloud] .kw:nth-child(2n) span{animation-duration:6.2s}
+@keyframes kw-float{from{transform:translate(-5px,4px)}to{transform:translate(6px,-5px)}}
+.kw-foot{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;margin-top:14px;border-top:1px solid var(--line);padding-top:13px}
+.kw-def{flex:1;font-size:17px;line-height:1.4;max-width:1050px;min-height:50px}
+.kw-def b{color:var(--cobalt);margin-right:8px}
+.kw-def span{display:block;color:var(--muted);font-size:15px;margin-top:2px}
+.kw-toggle{flex-shrink:0;border:0;border-bottom:1px solid var(--cobalt);background:none;padding:6px 0;font-size:14px;color:var(--navy);white-space:nowrap}
+
+/* 12 · La espiral */
+.spiral-layout{display:grid;grid-template-columns:minmax(280px,.9fr) 1.3fr;gap:4vw;align-items:center}
+.spiral-svg{display:block;width:100%;max-height:58vh;overflow:visible}
+.spiral-svg .turn1{fill:none;stroke:var(--cobalt);stroke-width:7;stroke-linecap:round;stroke-dasharray:1}
+.spiral-svg .turn2{fill:none;stroke:#9fb3ea;stroke-width:3;stroke-linecap:round;stroke-dasharray:.012 .01}
+.spiral-svg .st circle{fill:var(--navy);stroke:var(--light);stroke-width:4}
+.spiral-svg .st.first circle{fill:var(--cobalt)}
+.spiral-svg .st text{font-family:"Open Sans",Arial,sans-serif;font-size:20px;font-weight:800;fill:#fff;text-anchor:middle;dominant-baseline:central}
+.spiral-svg .along{font-family:"Open Sans",Arial,sans-serif;font-size:15px;font-weight:700;fill:var(--cobalt);letter-spacing:.04em}
+.spiral-svg .core{font-family:"Open Sans",Arial,sans-serif;font-size:13px;font-weight:700;fill:var(--muted);text-anchor:middle;letter-spacing:.12em}
+.slide.is-active .spiral-svg .turn1{animation:draw 2.4s var(--ease) .2s both}
+.slide.is-active .spiral-svg .st{transform-box:fill-box;transform-origin:center;animation:pop .55s var(--ease) both;animation-delay:calc(.25s + var(--f) * 2.1s)}
+.slide.is-active .spiral-svg .later{animation:fade-in 1s ease 2.5s both}
+.spiral-table>div{display:grid;grid-template-columns:46px 1.25fr 1fr;gap:16px;align-items:baseline;border-top:1px solid var(--line);padding:11px 0}
+.spiral-table>div:last-child{border-bottom:1px solid var(--line)}
+.spiral-table .sl{font-size:28px;font-weight:800;font-stretch:75%;color:var(--cobalt);line-height:1}
+.spiral-table h3{font-size:19px;line-height:1.2}
+.spiral-table h3 small{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--muted);margin-bottom:2px;font-stretch:100%}
+.spiral-table p{font-size:15px;line-height:1.35}
+.spiral-table .hd{border-top:0;padding-top:0}
+.spiral-table .hd span{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.spiral-note{font-size:18px;margin-top:20px;max-width:1250px}
+.spiral-note b{color:var(--navy)}
+
+/* 13 · Cada vuelta */
+.cycle{position:relative;margin-top:8px}
+.cycle-track{position:relative;height:28px;margin:0 calc(100% / 12)}
+.cycle-track:before{content:"";position:absolute;left:0;right:0;top:12px;height:4px;border-radius:2px;background:#d6dde9}
+.cycle-track:after{content:"";position:absolute;left:0;top:12px;height:4px;border-radius:2px;background:var(--cobalt);width:calc(var(--pos,1) * 100%);transition:width 1s var(--ease)}
+.pair-dot{position:absolute;top:2px;left:calc(var(--pos,1) * 100%);display:flex;gap:2px;translate:-50% 0;transition:left 1s var(--ease);z-index:2}
+.pair-dot i{width:24px;height:24px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 6px #0c233c33}
+.pair-dot i:first-child{background:var(--navy)}.pair-dot i:last-child{background:var(--cobalt)}
+.stations{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:14px}
+.station{border-top:3px solid #d6dde9;padding-top:12px;transition:border-color .6s}
+.station .n{font-size:12px;font-weight:700;color:var(--muted)}
+.station b{display:block;font-size:clamp(20px,1.7vw,26px);font-stretch:87.5%;color:var(--navy);margin:2px 0 4px;transition:color .6s}
+.station .map{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;color:#fff;background:#9aa6b8;border-radius:3px;padding:1px 7px;transition:background .6s}
+.station p{font-size:15px;line-height:1.35;margin-top:8px;color:var(--ink)}
+.station.on{border-color:var(--cobalt)}
+.station.on .map{background:var(--cobalt)}
+.legend-pair{display:flex;gap:22px;margin-top:22px;font-size:14px;color:var(--muted)}
+.legend-pair i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:7px;vertical-align:-1px}
+.loop-back{display:flex;align-items:center;gap:14px;margin-top:20px;padding:14px 18px;border:1px dashed var(--cobalt);border-radius:6px;color:var(--navy);font-size:17px;max-width:880px;opacity:.35;transition:opacity .8s}
+.loop-back b{font-size:26px;color:var(--cobalt);line-height:1}
+.cycle[data-done] ~ .loop-back,.motion-paused .loop-back{opacity:1}
+
+/* 14–19 · Plantilla de paso SPIRAL */
+.step .slide-head{margin-bottom:24px}
+.step-layout{display:grid;grid-template-columns:.62fr 1.6fr;gap:4.5vw;align-items:start}
+.step-layout>*,.diverge>*,.spiral-layout>*,.case>*,.route>*{min-width:0}
+.spiral-steps{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:20px}
+.spiral-steps li{text-align:center;border-top:4px solid #cfd7e4;padding-top:6px;color:#8d97a8}
+.spiral-steps li b{display:block;font-size:24px;font-weight:800;font-stretch:75%;line-height:1}
+.spiral-steps li span{display:block;font-size:10px;letter-spacing:.04em}
+.spiral-steps li.done{border-color:var(--navy);color:var(--navy)}
+.spiral-steps li.now{border-color:var(--cobalt);color:#fff;background:var(--cobalt);padding-bottom:6px}
+.side-block{border-top:1px solid var(--line);padding:12px 0}
+.side-block small{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);margin-bottom:6px}
+.side-block p{font-size:15px;line-height:1.4}
+.side-block p+p{margin-top:5px}
+.side-block b{color:var(--navy)}
+.side-block.deliv{border-top:3px solid var(--cobalt);background:var(--soft);padding:12px 14px;margin-top:6px}
+.side-block.deliv p{font-size:16px;color:var(--navy);font-weight:600}
+.rows>div{display:grid;grid-template-columns:160px 1fr;gap:22px;align-items:baseline;border-top:1px solid var(--line);padding:12px 0}
+.rows>div:last-child{border-bottom:1px solid var(--line)}
+.rows span{font-size:13px;font-weight:700;color:var(--cobalt)}
+.rows p{font-size:17px;line-height:1.4}
+.rows .ask p{font-size:19px;font-weight:700;color:var(--navy)}
+.rule{display:grid;grid-template-columns:120px 1fr;gap:22px;align-items:center;margin-top:20px;border-left:4px solid var(--cobalt);padding:12px 18px;background:var(--soft)}
+.rule span{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--cobalt)}
+.rule p{font-size:20px;font-weight:700;font-stretch:87.5%;color:var(--navy);line-height:1.25}
+.visual{margin-top:18px}
+.visual>small{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);margin-bottom:10px;text-transform:uppercase}
+/* I: regla, agente o persona */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.trio>div{border-top:4px solid var(--c);background:var(--card);padding:14px 16px;box-shadow:0 1px 0 #0c233c14}
+.trio b{display:block;font-size:20px;font-stretch:87.5%;color:var(--navy)}
+.trio small{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--c);margin:2px 0 8px;text-transform:uppercase}
+.trio p{font-size:15px;line-height:1.38}
+/* R: tarea frente a flujo */
+.task-flow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.task-flow>div{background:var(--card);padding:14px 16px;box-shadow:0 1px 0 #0c233c14}
+.task-flow b{display:block;font-size:17px;color:var(--navy);margin-bottom:10px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.flow span{font-size:13px;padding:5px 10px;border-radius:4px;background:#e8ecf3;color:var(--ink)}
+.flow span.ai{background:var(--cobalt);color:#fff;font-weight:700}
+.flow span.hu{background:var(--navy);color:#fff;font-weight:700}
+.flow i{font-style:normal;color:#9aa6b8}
+.task-flow p{font-size:14px;color:var(--muted);margin-top:10px}
+/* A: matriz de evals */
+.evals{width:100%;border-collapse:collapse;font-size:15px;background:var(--card)}
+.evals th{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--muted);text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);text-transform:uppercase}
+.evals td{padding:9px 12px;border-bottom:1px solid #0c233c12}
+.evals td:first-child{font-weight:700;color:var(--navy)}
+.evals .ok{color:#0a8f6a;font-weight:700}.evals .ko{color:#c2342d;font-weight:700}.evals .na{color:#9aa6b8}
+.evals .act{font-weight:700;color:var(--cobalt)}
+.evals .esc{font-weight:700;color:var(--navy)}
+.slide.is-active .evals tbody tr{animation:element-in .5s var(--ease) both;animation-delay:calc(var(--i) * 120ms + .5s)}
+.evals-note{font-size:14px;color:var(--muted);margin-top:8px}
+/* L: escalera de autonomía */
+.ladder{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;align-items:end}
+.ladder>div{min-height:calc(76px + var(--i) * 22px);display:flex;flex-direction:column;justify-content:flex-end;gap:4px;padding:12px;background:var(--card);border-top:4px solid rgba(30,73,226,calc(.25 + var(--i) * .18));box-shadow:0 1px 0 #0c233c14}
+.ladder small{font-size:11px;font-weight:700;color:var(--muted)}
+.ladder b{font-size:16px;font-stretch:87.5%;color:var(--navy);line-height:1.15}
+.ladder p{font-size:13px;line-height:1.3;color:var(--muted)}
+.slide.is-active .ladder>div{animation:grow-y .7s var(--ease) both;transform-origin:bottom;animation-delay:calc(var(--i) * 140ms + .4s)}
+.ladder-note{font-size:14px;color:var(--muted);margin-top:8px}
+
+/* 20 · Deployed by design */
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 3vw}
+.principles>div{position:relative;padding-top:16px}
+.principles>div:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--sky);transform-origin:left}
+.principles span{font-size:13px;font-weight:700;color:var(--sky)}
+.principles h3{font-size:clamp(21px,1.8vw,27px);margin:4px 0 8px}
+.principles p{font-size:16px;line-height:1.42;color:#cfd8e6}
+.slide.is-active .principles>div:before{animation:grow-x .9s var(--ease) both;animation-delay:var(--delay,.2s)}
+
+/* 21 · Un caso, de principio a fin */
+.case{display:grid;grid-template-columns:2.15fr 1fr;gap:3.5vw;align-items:start}
+.lane{margin-bottom:18px}
+.lane>small{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--muted);margin-bottom:10px}
+.lane.new>small{color:var(--cobalt)}
+.lane ol{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;counter-reset:s}
+.lane li{position:relative;font-size:14px;line-height:1.32;background:var(--card);padding:10px 11px 11px;border-top:3px solid #b8c2d3;box-shadow:0 1px 0 #0c233c14;min-height:96px}
+.lane.new li{border-top-color:var(--cobalt)}
+.lane li i{display:inline-block;font-style:normal;font-size:11px;font-weight:700;color:#b3261e;background:#fdecea;border-radius:3px;padding:1px 6px;margin-top:6px}
+.lane li .who{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;border-radius:3px;padding:1px 7px;margin-bottom:6px;color:#fff}
+.who.ag{background:var(--cobalt)}.who.pe{background:var(--navy)}.who.si{background:#6b7a90}
+.log{background:var(--navy);color:#dfe7f2;padding:16px 18px;border-radius:4px;font-size:14px}
+.log>small{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--mint);margin-bottom:10px}
+.log li{display:grid;grid-template-columns:18px 1fr;gap:8px;padding:6px 0;border-top:1px solid #ffffff1a;font-size:14px;line-height:1.35}
+.log li:before{content:"✓";color:var(--mint);font-weight:700}
+.log li.wait:before{content:"‖";color:var(--sky)}
+.case-method{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:4px;border-top:1px solid var(--line);padding-top:14px}
+.case-method p{font-size:14px;line-height:1.35}
+.case-method b{display:block;font-size:20px;font-weight:800;font-stretch:75%;color:var(--cobalt)}
+
+/* 22 · Las personas */
+.people{display:grid;grid-template-columns:repeat(4,1fr);gap:2.4vw}
+.people>div{border-top:3px solid var(--cobalt);padding-top:16px}
+.people h3{font-size:clamp(21px,1.75vw,26px);margin-bottom:12px}
+.people p{font-size:17px;line-height:1.42}
+
+/* 23 · Evidencias */
+.proof{display:grid;grid-template-columns:1fr 1fr;gap:3vw}
+.proof>article{background:var(--card);padding:24px 26px;box-shadow:0 1px 0 #0c233c14,0 10px 30px #0c233c0d;display:flex;flex-direction:column}
+.proof-logo{height:46px;display:flex;align-items:center;margin-bottom:14px}
+.proof-logo img{max-height:42px;width:auto}
+.proof-lead{font-size:17px;line-height:1.4;margin-bottom:16px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:18px;border-top:1px solid var(--line);padding-top:16px}
+.stats strong{display:block;font-size:clamp(52px,5vw,78px);font-weight:700;font-stretch:75%;letter-spacing:-.03em;line-height:1;color:var(--navy)}
+.stats strong small{font-size:.45em;letter-spacing:0}
+.stats p{font-size:15px;line-height:1.35;margin-top:6px}
+.today{margin-top:auto;padding-top:16px}
+.today p{font-size:16px;color:var(--navy);border-left:3px solid var(--cobalt);padding:8px 12px;background:var(--soft)}
+.today b{color:var(--cobalt)}
+.caveat{font-size:13px;color:var(--muted);margin-top:10px}
+
+/* 24 · Equipo y credenciales */
+.social-proof{display:flex;gap:45px;align-items:center;margin-bottom:22px}
+.social-proof strong{font-size:clamp(68px,6.5vw,96px);font-weight:700;font-stretch:75%;line-height:1;color:var(--cobalt);letter-spacing:-.03em}
+.social-proof p{font-size:19px;max-width:420px}
+.company-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0 16px;margin-bottom:26px}
+.company-strip>span{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted)}
+.client-logos{display:grid;grid-template-columns:repeat(8,1fr);gap:26px;align-items:center;margin-top:12px}
+.client-logos>div{height:66px;display:flex;align-items:center;justify-content:center}
+.client-logos img{display:block;max-width:100%;max-height:52px;width:auto;height:auto;object-fit:contain}
+.client-logos img[alt="ING"]{max-height:40px}
+.client-logos img[alt="Great Place to Work"]{max-height:60px}
+.profiles{display:grid;grid-template-columns:repeat(3,1fr);gap:3.5vw}
+.profile-heading{display:grid;grid-template-columns:82px 1fr;gap:18px;align-items:start;min-height:112px}
+.portrait{width:82px;height:82px;border-radius:50%;object-fit:cover;object-position:center 22%}
+.profile h3{font-size:25px;margin:0 0 6px}
+.position{font-size:16px;line-height:1.25;color:var(--navy);font-weight:700}
+.company{font-size:15px;color:var(--navy);margin-top:3px}
+.prior{font-size:13px;font-weight:700;color:var(--cobalt);margin:8px 0}
+.bio{font-size:15px;line-height:1.4}
+.contribution{font-size:15px;color:var(--navy);border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+.team-note{font-size:16px;color:var(--muted);margin-top:22px;border-top:1px solid var(--line);padding-top:12px}
+
+/* 25 · Por dónde empezar */
+.conditions{display:grid;grid-template-columns:repeat(3,1fr);gap:3vw;margin-top:4px}
+.conditions>div{border-top:3px solid var(--cobalt);padding-top:16px}
+.conditions span{font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--cobalt)}
+.conditions h3{font-size:clamp(23px,2vw,30px);margin:6px 0 10px}
+.conditions p{font-size:17px}
+.start-line{font-size:19px;margin-top:28px;max-width:1200px}
+.start-line b{color:var(--navy)}
+.installed{font-size:clamp(24px,2.2vw,34px);line-height:1.25;font-weight:700;font-stretch:87.5%;color:var(--navy);margin-top:26px;max-width:1150px;padding-left:20px;border-left:5px solid var(--cobalt)}
+
+/* 26 · Cierre con vídeo */
+.video-slide{background:#06101b;color:#e8edf5;--head:#fff;--accent:var(--mint);--tagc:var(--mint);--muted:#aeb9cb;--line:rgba(255,255,255,.18)}
+.video-slide .scene-media{position:absolute;inset:0;z-index:0;overflow:hidden;background:#06101b;pointer-events:none}
+.video-slide .scene-media img,.video-slide .scene-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%}
+.video-slide .scene-media:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0c233cf2 0%,#0c233cd9 52%,#0c233c40 100%)}
+.video-slide .slide-head,.video-slide .body-content{position:relative;z-index:1}
+.motion-paused .video-slide .scene-media video{visibility:hidden}
+.closing-copy{max-width:760px}
+.closing-copy>p{font-size:20px;line-height:1.5}
+.closing-copy h3{font-size:clamp(30px,2.6vw,42px);margin-top:30px;color:#fff}
+.closing-copy h3 em{color:var(--mint)}
+#cierre h2{font-size:clamp(40px,4.3vw,70px)}
+
+/* 02 · Quiénes somos: cuatro perfiles */
+.profiles.four{grid-template-columns:repeat(4,1fr);gap:2.6vw}
+.portrait.initials{display:grid;place-items:center;background:var(--cobalt);color:#fff;font-size:28px;font-weight:700;font-stretch:87.5%;letter-spacing:.02em}
+
+/* 04 · Cinco principios */
+.creed{display:grid;grid-template-columns:repeat(5,1fr);gap:2.2vw}
+.creed>div{border-top:3px solid var(--cobalt);padding-top:16px}
+.creed span{font-size:13px;font-weight:700;color:var(--cobalt)}
+.creed h3{font-size:clamp(20px,1.6vw,25px);margin:6px 0 10px}
+.creed p{font-size:16px;line-height:1.42}
+.why-motto{font-size:clamp(26px,2.4vw,38px);line-height:1.15;font-weight:700;font-stretch:87.5%;letter-spacing:-.015em;color:var(--navy);margin-top:34px}
+
+/* 08 · La eficiencia tiene techo */
+.levers{display:grid;grid-template-columns:1fr 1fr;gap:3vw;margin-bottom:20px}
+.lever{margin:0;background:var(--card);padding:16px 22px 14px;box-shadow:0 1px 0 #0c233c14}
+.lever figcaption small{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--muted)}
+.lever.up figcaption small{color:var(--cobalt)}
+.lever figcaption b{display:block;font-size:22px;font-stretch:87.5%;color:var(--navy);margin:2px 0 4px}
+.lever-svg{display:block;width:100%;height:auto;max-height:28vh;overflow:visible}
+.lever-svg text{font-family:"Open Sans",Arial,sans-serif;font-size:13px;fill:var(--muted)}
+.lever-svg .axis{stroke:#9aa6b8;stroke-width:1.5}
+.lever-svg .ceil{stroke:#c2342d;stroke-width:2;stroke-dasharray:7 6}
+.lever.up .lever-svg .ceil{stroke:#9aa6b8}
+.lever-svg .ceil-lbl{font-weight:700;fill:#c2342d}
+.lever-svg .nocap{fill:var(--cobalt)}
+.lever-svg .ref-lbl{font-size:12px;fill:#8d97a8}
+.lever-svg .bar-cost{fill:#c9d2e2}
+.lever-svg .bar-save{fill:var(--navy);transform-box:fill-box;transform-origin:50% 100%}
+.lever-svg .growth{fill:none;stroke:var(--cobalt);stroke-width:4;stroke-linecap:round;stroke-dasharray:1}
+.lever-svg .gdot circle{fill:var(--cobalt);stroke:#fff;stroke-width:2}
+.lever-svg .gdot text{font-weight:700;fill:var(--navy)}
+.slide.is-active .bar-save{animation:save-up 1.6s var(--ease) .3s both}
+@keyframes save-up{0%{transform:scaleY(0)}70%{transform:scaleY(1.035)}85%{transform:scaleY(.985)}100%{transform:scaleY(1)}}
+.slide.is-active .growth{animation:draw 2.2s var(--ease) .4s both}
+.slide.is-active .gdot{transform-box:fill-box;transform-origin:center;animation:pop .5s var(--ease) both;animation-delay:var(--d)}
+.lever p{font-size:16px;margin-top:4px}
+.lever-proof{display:grid;grid-template-columns:1fr 1.25fr 1.6fr;gap:3vw;align-items:start;border-top:1px solid var(--line);padding-top:14px}
+.lever-proof strong{display:block;font-size:clamp(34px,3.1vw,48px);font-weight:700;font-stretch:75%;color:var(--navy);line-height:1;letter-spacing:-.02em}
+.lever-proof strong small{font-size:.5em;letter-spacing:0}
+.lever-proof strong i{font-style:normal;font-size:.42em;font-weight:600;font-stretch:100%;color:var(--muted);margin:0 4px}
+.lever-proof p{font-size:15px;line-height:1.38;margin-top:6px}
+.lever-proof .lever-take{font-size:17px;line-height:1.4;color:var(--navy);margin-top:0;border-left:3px solid var(--cobalt);padding-left:14px}
+
+/* 24 · Seis compromisos, con icono y analogía */
+.pledges{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 2.4vw}
+.pledges>div{display:grid;grid-template-columns:48px 1fr;column-gap:16px;align-content:start;background:var(--card);padding:16px 18px;box-shadow:0 1px 0 #0c233c14}
+.pledges .pico{grid-row:1/4}
+.pledges h3{font-size:clamp(19px,1.5vw,23px);margin-bottom:6px}
+.pledges p{font-size:15.5px;line-height:1.4}
+.pledges small{display:block;font-size:14px;line-height:1.35;color:var(--cobalt);margin-top:8px}
+.pico{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:rgba(30,73,226,.1)}
+.pico svg{width:26px;height:26px;fill:none;stroke:var(--cobalt);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.slide.is-active .pico svg{animation:pop .6s var(--ease) both;animation-delay:inherit}
+
+/* 25 · Caso: un documento recorre los dos procesos */
+.track{position:relative;padding-top:22px}
+.doc{position:absolute;z-index:3;top:-6px;left:calc((var(--k,0) + .5) / 6 * 100%);translate:-50% 0;width:24px;height:30px;opacity:0;transition:left .55s var(--ease),opacity .3s}
+.doc svg{display:block;width:100%;height:100%;fill:#fff;stroke:#6b7a90;stroke-width:1.6;stroke-linejoin:round;filter:drop-shadow(0 2px 4px #0c233c40)}
+.lane.new .doc svg{stroke:var(--cobalt)}
+.lane.back .doc svg{stroke:#c2342d}
+#caso.playing .lane.going .doc{opacity:1}
+.lane li{transition:opacity .35s,box-shadow .35s,transform .35s}
+.lane li i{transition:opacity .3s}
+#caso.playing .lane li:not(.seen){opacity:.3}
+#caso.playing .lane li:not(.seen) i{opacity:0}
+.lane li.at{transform:translateY(-3px);box-shadow:0 8px 18px #0c233c24}
+.lane.old li.hold.at i{animation:blink .45s ease-in-out 4 alternate}
+@keyframes blink{to{opacity:.2}}
+.lane.back li.at{box-shadow:0 0 0 2px #c2342d66,0 8px 18px #0c233c24}
+.lane.new li.ag.at{box-shadow:0 0 0 3px rgba(30,73,226,.4),0 8px 18px #0c233c24}
+.lane.new li.pe.seen:after{content:"✓";position:absolute;right:8px;top:8px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-size:12px;font-weight:700}
+#caso.playing .lane.new li.pe.seen:after{animation:pop .4s var(--ease) both}
+.lane-sum{font-style:normal;font-weight:600;letter-spacing:0;text-transform:none;transition:opacity .5s}
+#caso.playing .lane:not(.done) .lane-sum{opacity:0}
+.log li{transition:opacity .4s,transform .4s}
+#caso.playing .log li:not(.on){opacity:0;transform:translateX(10px)}
+.case-replay{display:block;margin:-6px 0 0 auto;border:0;border-bottom:1px solid var(--cobalt);background:none;padding:4px 0;font-size:13px;color:var(--navy)}
+
+/* 27 · Modelo de gobierno */
+.gov{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4vw}
+.gov>article{background:var(--card);padding:18px 20px 12px;border-top:3px solid var(--cobalt);box-shadow:0 1px 0 #0c233c14}
+.gov .pico{margin-bottom:10px}
+.gov small{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--cobalt)}
+.gov h3{font-size:clamp(21px,1.7vw,26px);margin:2px 0 6px}
+.gov-q{font-size:15px;line-height:1.38;color:var(--muted);margin-bottom:8px}
+.gov li{position:relative;padding:7px 0 7px 26px;border-top:1px solid var(--line);font-size:15.5px;line-height:1.35}
+.gov li:before{content:"✓";position:absolute;left:2px;top:7px;color:var(--cobalt);font-weight:700}
+.gov li:nth-child(2){--i:1}.gov li:nth-child(3){--i:2}.gov li:nth-child(4){--i:3}.gov li:nth-child(5){--i:4}
+.slide.is-active .gov li{animation:element-in .5s var(--ease) both;animation-delay:calc(var(--b,.5s) + var(--i,0) * 110ms)}
+
+/* 28 · Traspaso */
+.ho-svg{display:block;width:100%;height:auto;overflow:visible}
+.ho-svg .band{fill:rgba(30,73,226,.04)}.ho-svg .band.b2{fill:rgba(30,73,226,.08)}
+.ho-svg .axis{stroke:#9aa6b8;stroke-width:1.5}
+.ho-svg .ho-kpmg{fill:none;stroke:var(--cobalt);stroke-width:5;stroke-linecap:round;stroke-dasharray:1}
+.ho-svg .ho-spi{fill:none;stroke:#9aa6b8;stroke-width:4;stroke-linecap:round;stroke-dasharray:1}
+.ho-svg text{font-family:"Open Sans",Arial,sans-serif;font-size:16px;font-weight:700}
+.ho-svg .lbl-kpmg{fill:var(--cobalt)}.ho-svg .lbl-spi{fill:#6b7a90}.ho-svg .lbl-x{fill:var(--muted);font-size:13px;font-weight:600}
+.slide.is-active .ho-kpmg,.slide.is-active .ho-spi{animation:draw 2.2s var(--ease) .3s both}
+.slide.is-active .ho-svg text{animation:fade-in .8s ease 1.9s both}
+.phases3{display:grid;grid-template-columns:repeat(3,1fr);margin-top:14px}
+.phases3>div{border-left:3px solid var(--cobalt);padding:0 2vw 0 16px}
+.phases3 span{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--cobalt);text-transform:uppercase}
+.phases3 h3{font-size:clamp(20px,1.6vw,25px);margin:4px 0 6px}
+.phases3 p{font-size:15.5px;line-height:1.4}
+
+/* Pantallas bajas (portátiles) */
+@media screen and (min-width:721px) and (max-height:940px){
+  :root{--font-question:clamp(44px,4.8vw,76px);--font-title:clamp(32px,2.9vw,46px);--font-body:18px;--head-gap:22px}
+  .slide:not(.portada){padding-top:96px;padding-bottom:70px}
+  .claim{font-size:19px;margin-top:8px}.intro{font-size:18px;margin-bottom:18px}
+  .big-contrast strong{font-size:clamp(90px,9vw,140px)}.punchline{margin-top:26px}
+  .rows>div{padding:9px 0}.rows p{font-size:16px}.rows .ask p{font-size:17px}
+  .rule{margin-top:14px;padding:9px 16px}.rule p{font-size:18px}
+  .side-block{padding:9px 0}.spiral-steps{margin-bottom:14px}
+  .step .slide-head{margin-bottom:16px}.visual{margin-top:12px}
+  .trio>div,.task-flow>div{padding:11px 14px}.trio p{font-size:14px}
+  .ladder>div{min-height:calc(64px + var(--i) * 16px);padding:9px 10px}
+  .evals td{padding:7px 12px}
+  .kw-rung{padding:4px 0}.kw{font-size:14px;padding:5px 11px}
+  .spiral-table>div{padding:8px 0}.spiral-table p{font-size:14px}
+  .lane li{min-height:84px;padding:8px 9px}.lane{margin-bottom:12px}
+  .profile-heading{min-height:100px}.client-logos>div{height:56px}
+  .real-stage{height:clamp(260px,38vh,330px)}
+  .route-foot{margin-top:20px}.leg p{font-size:16px}
+  .evals td{padding:6px 12px}.evals th{padding:7px 12px}.evals-note{margin-top:5px}
+  .social-proof{margin-bottom:14px}.social-proof strong{font-size:76px}.company-strip{margin-bottom:18px;padding:10px 0 12px}.team-note{margin-top:14px}
+  .spiral-svg{max-height:54vh}
+  #equipo .profile-heading{min-height:0;margin-bottom:4px}#equipo .social-proof strong{font-size:64px}#equipo .client-logos>div{height:46px}#equipo .client-logos img{max-height:40px}
+  #equipo .bio,#equipo .contribution{font-size:14px}#equipo .prior{margin:6px 0}#equipo .company-strip{margin-bottom:14px}
+}
+/* Pantallas grandes */
+@media(min-width:1800px){.slide:not(.portada){padding-left:calc((100vw - 1550px)/2);padding-right:calc((100vw - 1550px)/2)}.question{padding-left:calc((100vw - 1550px)/2 + 4vw)}}
+/* Tabletas */
+@media(max-width:1100px){
+  #nav nav{gap:13px;font-size:12px}
+  .controls #motion{width:30px;font-size:0;padding:0}.controls #motion:before{content:"Ⅱ";font-size:12px}.controls #motion[aria-pressed=true]:before{content:"▶"}
+  .diverge,.spiral-layout,.case{grid-template-columns:1fr}
+  .step-layout{grid-template-columns:1fr;gap:20px}
+  .people{grid-template-columns:1fr 1fr;gap:28px}
+  .principles{grid-template-columns:1fr 1fr}
+  .client-logos{grid-template-columns:repeat(4,1fr)}
+  .profiles{grid-template-columns:1fr;gap:26px}
+  .lane ol{grid-template-columns:repeat(3,1fr)}
+  .case-method{grid-template-columns:repeat(3,1fr)}
+  .creed{grid-template-columns:repeat(3,1fr);row-gap:24px}
+  .profiles.four{grid-template-columns:repeat(2,1fr)}
+  .pledges{grid-template-columns:repeat(2,1fr)}
+  .doc{display:none}
+}
+/* Móviles */
+@media(max-width:720px){
+  :root{--font-question:44px;--font-title:33px;--font-sub:23px;--font-body:17px;--head-gap:24px}
+  #nav{height:98px;flex-wrap:wrap;padding:10px 5vw 34px}
+  #nav nav{position:absolute;bottom:9px;left:5vw;right:5vw;justify-content:space-between;gap:6px;font-size:10.5px}
+  #nav nav a[aria-current]:after{bottom:-5px}
+  .brands img{height:20px}.brands img.spi{height:28px}
+  .controls #replay{display:none}
+  .slide:not(.portada){padding:132px 7vw 92px}
+  .question{padding-left:7vw}
+  .portada{height:calc(98px + 56.25vw + 70px);padding:0}.portada .scene-media{top:98px;bottom:auto;height:56.25vw}
+  .cover-frame{top:98px;bottom:auto;height:56.25vw}.cover-frame>div{width:100%}
+  .cover-next{bottom:16px;font-size:12px;padding:8px 14px}
+  .footer{left:7vw;right:7vw;font-size:9.5px}
+  .big-contrast{grid-template-columns:1fr 1fr;gap:20px}.big-contrast strong{font-size:96px}.big-contrast .gap{grid-column:1/-1;grid-row:2;padding:12px 0}.gap b{font-size:28px}
+  .punchline{font-size:25px}.six-note{font-size:17px}
+  .real-stage{height:auto;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .real-lines,.real-label{display:none}
+  .proc-step,.mess{position:static;translate:none;white-space:normal}
+  .reality-copy,.route,.worlds,.trio,.task-flow,.people,.principles,.proof,.stats,.conditions{grid-template-columns:1fr}
+  .leg,.route-line,.route-stops{grid-column:1!important;grid-row:auto!important}
+  .route-line{display:none}.route-stops.g2{grid-template-columns:1fr 1fr;row-gap:18px}
+  .worlds{gap:18px}.world.left,.world.right{text-align:left;padding:0;border:0}.fde-node{margin:0;width:140px;height:140px}.fde-node b{font-size:40px}
+  .kw-rung{grid-template-columns:1fr;gap:6px}.kw-foot{flex-direction:column;gap:12px}
+  .spiral-table>div{grid-template-columns:36px 1fr}.spiral-table>div p:last-child{grid-column:2}
+  .stations{grid-template-columns:1fr 1fr}.cycle-track{display:none}
+  .rows>div{grid-template-columns:1fr;gap:4px}
+  .rule{grid-template-columns:1fr;gap:6px}
+  .ladder{grid-template-columns:1fr}.ladder>div{min-height:0}
+  .evals{font-size:13px;min-width:520px}.evals th,.evals td{padding:6px}.visual:has(.evals){overflow-x:auto}
+  .lane ol{grid-template-columns:1fr 1fr}.case-method{grid-template-columns:1fr 1fr}
+  .social-proof{display:block}.social-proof p{margin-top:10px}
+  .client-logos{grid-template-columns:repeat(2,1fr);gap:16px}
+  .route-foot{grid-template-columns:1fr;gap:6px}
+  .qmark{font-size:70vw}
+  .creed,.profiles.four,.levers,.lever-proof,.pledges,.gov,.phases3{grid-template-columns:1fr;gap:20px}
+  .phases3>div{padding-right:0}
+  .ho-svg text{font-size:22px}
+}
+
+/* PDF: una página por pantalla */
+@media print{
+  @page{size:1600px 1000px;margin:0}
+  :root{--font-question:84px;--font-title:52px;--font-body:21px;--head-gap:30px}
+  html,body{width:1600px;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  #nav,.cover-next,.kw-toggle{display:none!important}
+  *,*:before,*:after{animation:none!important;transition:none!important}
+  .slide{width:1600px;height:1000px;min-height:1000px;max-height:1000px;padding:110px 96px 90px!important;break-after:page;page-break-after:always;overflow:hidden}
+  .slide:last-child{break-after:auto}
+  .slide.portada{padding:0!important}
+  .portada .scene-media,.cover-frame{top:0}
+  .cover-frame>div{width:100%}
+  .cover-claim{opacity:1;transform:none}
+  .scene-media video{display:none}
+  .print-brand{position:absolute;top:30px;left:96px;right:96px;display:flex;align-items:center;gap:15px;height:40px;z-index:2}
+  .print-brand img{height:26px;width:auto}.print-brand img.spi{height:36px}
+  .print-brand span{color:#9aa3b2}
+  .print-brand b{font-size:12px;letter-spacing:1px;margin-left:auto;font-weight:400;text-transform:uppercase}
+  .dark .print-brand img,.cobalt .print-brand img,.video-slide .print-brand img{filter:brightness(0) invert(1)}
+  .portada .print-brand{display:none}
+  .footer{left:96px;right:96px;bottom:26px}
+  .kw-stage .kw-label{opacity:1!important}.kw-stage .kw-rung{border-color:var(--line)!important}
+  .kw-stage .kw{transform:none!important;background:#fff!important;border-color:#0c233c33!important;color:var(--navy)!important}
+  .cycle .station{border-color:var(--cobalt)}.cycle .station .map{background:var(--cobalt)}.loop-back{opacity:1}
+  .mess{opacity:1!important;transform:none!important}
+  .doc,.case-replay{display:none!important}
+  .lane li,.log li,.lane-sum{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+<header id="nav">
+<a class="brands" href="#inicio" aria-label="KPMG y Spiralia, inicio"><img src="assets/kpmg.svg" alt="KPMG"><span>×</span><img class="spi" src="assets/spiralia.png" alt="Spiralia"></a>
+<nav aria-label="Capítulos"><a href="#equipo" data-chapter="Spiralia">Spiralia</a><a href="#golpe" data-chapter="Contexto">Contexto</a><a href="#q-plantilla" data-chapter="Respuesta">Respuesta</a><a href="#q-paso" data-chapter="SPIRAL">SPIRAL</a><a href="#caso" data-chapter="Práctica">Práctica</a><a href="#q-autonomia" data-chapter="Autonomía">Autonomía</a><a href="#empezar" data-chapter="Empezar">Empezar</a></nav>
+<div class="controls"><button id="motion" aria-pressed="false" title="Pausar movimiento (M)">Pausar movimiento</button><button id="replay" aria-label="Repetir animación" title="Repetir animación (A)">↻</button><button id="prev" aria-label="Pantalla anterior">↑</button><button id="next" aria-label="Pantalla siguiente">↓</button></div>
+<div id="progress" aria-hidden="true"></div>
+</header>
+<template id="print-brand-tpl"><div class="print-brand"><img src="assets/kpmg.svg" alt="KPMG"><span>×</span><img class="spi" src="assets/spiralia.png" alt="Spiralia"><b></b></div></template>
+<main>
+
+<!-- 01 · Portada -->
+<section id="inicio" class="slide portada" data-chapter="Spiralia" aria-labelledby="t-inicio">
+<div class="scene-media" aria-hidden="true"><img src="assets/cover-poster.jpg" alt=""><video muted playsinline preload="metadata" poster="assets/cover-poster.jpg" data-src="assets/cover-video.mp4" data-once tabindex="-1"></video></div>
+<div class="cover-frame" aria-hidden="true"><div><p class="cover-claim">Deployed <em>by design</em></p></div></div>
+<h1 id="t-inicio" class="sr-only">AI Forward. Deployed by design. Briefing de servicios de Spiralia para KPMG: del aula al trabajo real.</h1>
+<a class="cover-next" href="#equipo">Del aula al trabajo real <span>↓</span></a>
+</section>
+
+<!-- 02 · Equipo y credenciales -->
+<section id="equipo" class="slide white" data-chapter="Spiralia" aria-labelledby="t-equipo">
+<div class="slide-head"><span class="tag">Antes de nada · Quiénes somos</span><h2 id="t-equipo">IA aplicada a negocio<br><em>Con las firmas que transforman a otras</em></h2></div>
+<div class="body-content">
+<div class="social-proof"><strong><b data-to="50000">50.000</b>+</strong><p>alumnos formados en IA aplicada a negocio.</p></div>
+<div class="company-strip"><span>FORMANDO A PROFESIONALES DE</span><div class="client-logos">
+<div><img src="assets/ing.svg" alt="ING" title="ING"></div>
+<div><img src="assets/logo-coca-cola.png" alt="Coca-Cola Europacific Partners" title="Coca-Cola Europacific Partners"></div>
+<div><img src="assets/logo-deloitte.png" alt="Deloitte" title="Deloitte"></div>
+<div><img src="assets/logo-ey.png" alt="EY" title="EY"></div>
+<div><img src="assets/logo-lg.svg" alt="LG" title="LG"></div>
+<div><img src="assets/logo-schneider.svg" alt="Schneider Electric" title="Schneider Electric"></div>
+<div><img src="assets/logo-anicura.svg" alt="AniCura" title="AniCura"></div>
+<div><img src="assets/logo-gptw.png" alt="Great Place to Work" title="Great Place to Work"></div>
+</div></div>
+<div class="profiles four" data-stagger=".12">
+<article><div class="profile-heading"><img class="portrait" src="assets/ana-iza.jpg" alt="Ana Iza"><div><h3>Ana Iza</h3><p class="position">CEO &amp; Co-Founder</p><p class="company">Spiralia</p></div></div><p class="prior">Ex-McKinsey</p><p class="bio">Executive MBA por IE Business School. Más de una década liderando Spiralia.</p><p class="contribution">Dirección del proyecto y relación con KPMG</p></article>
+<article><div class="profile-heading"><img class="portrait" src="assets/ignacio-corroto.jpg" alt="Ignacio Corroto"><div><h3>Ignacio Corroto</h3><p class="position">Director del área de<br>Strategy Consulting</p><p class="company">Spiralia</p></div></div><p class="prior">Ex-KPMG</p><p class="bio">Experiencia en consultoría estratégica, transformación y trabajo con comités de dirección.</p><p class="contribution">Estrategia, procesos y modelo operativo</p></article>
+<article><div class="profile-heading"><img class="portrait" src="assets/jose-garza.jpg" alt="Jose Garza"><div><h3>Jose Garza</h3><p class="position">Director del área de<br>AI &amp; Digital Transformation</p><p class="company">Spiralia</p></div></div><p class="prior">Ex-KPMG · Ex-EY-Parthenon</p><p class="bio">Profesor del Grado en Inteligencia Artificial de la UFV. Director Académico y profesor titular de Power IA en thePower.</p><p class="contribution">IA aplicada a negocio y formación por área</p></article>
+<article><div class="profile-heading"><img class="portrait" src="assets/pedro-valero.jpg" alt="Pedro Valero"><div><h3>Pedro Valero</h3><p class="position">Head of<br>AI Deployment</p><p class="company">Spiralia</p></div></div><p class="prior">Ex-CTO y cofundador de GETHER y Tappy</p><p class="bio">MBA por IE Business School. Más de una década construyendo producto y tecnología al frente de equipos multidisciplinares.</p><p class="contribution">Despliegue de la IA y equipo FDE</p></article>
+</div>
+<p class="team-note">Hemos estado al otro lado de la mesa: venimos de la consultoría estratégica (McKinsey, KPMG, EY-Parthenon) y de construir tecnología. Con FDE y coaches de Spiralia trabajando junto a cada área.</p>
+</div>
+<footer class="footer"><span>Credenciales facilitadas por Spiralia.</span><span class="page"></span></footer>
+</section>
+
+<!-- 03 · Evidencias -->
+<section id="evidencia" class="slide" data-chapter="Spiralia" aria-labelledby="t-evidencia">
+<div class="slide-head"><span class="tag">Quiénes somos · Lo que ya hacemos</span><h2 id="t-evidencia">No lo contamos<br><em>Ya lo estamos haciendo</em></h2></div>
+<div class="body-content">
+<div class="proof">
+<article class="reveal" style="--delay:.15s">
+<div class="proof-logo"><img src="assets/ing.svg" alt="ING"></div>
+<p class="proof-lead">Formación de toda la organización, del comité de dirección a las oficinas y el contact center, diseñada alrededor del trabajo real.</p>
+<div class="stats">
+<div><strong><b data-to="4.6" data-dec="1">4,6</b><small>/5</small></strong><p>satisfacción con el uso de IA en España: nº 1 del grupo, 1,4 puntos por encima del segundo país</p></div>
+<div><strong><b data-to="92" data-pre="+">+92</b><small>%</small></strong><p>de crecimiento en usuarios activos semanales tras el programa, según la medición interna de ING</p></div>
+</div>
+<div class="today"><p><b>Hoy:</b> transformación completa de áreas, mano a mano con los equipos.</p></div>
+</article>
+<article class="reveal" style="--delay:.3s">
+<div class="proof-logo"><img src="assets/logo-coca-cola.png" alt="Coca-Cola Europacific Partners"></div>
+<p class="proof-lead">Formación de seis áreas en seis semanas, conectada con sus dolores, tareas y oportunidades.</p>
+<div class="stats">
+<div><strong><b data-to="218">218</b></strong><p>casos de uso identificados por los propios equipos</p></div>
+<div><strong><b data-to="6">6</b></strong><p>catálogos priorizados, uno por área, con referentes que los mantienen vivos</p></div>
+</div>
+<p class="caveat">218 casos identificados no son 218 despliegues: son el punto de partida de SPIRAL.</p>
+<div class="today"><p><b>Hoy:</b> los casos elegidos avanzan hacia solución y operación.</p></div>
+</article>
+</div>
+</div>
+<footer class="footer"><span>ING: programa de adopción de IA de Spiralia en ING España; medición interna del grupo, uso externo autorizado. CCEP: programa CCEP Iberia × Spiralia, julio de 2026.</span><span class="page"></span></footer>
+</section>
+
+<!-- 04 · Cómo trabajamos -->
+<section id="principios" class="slide" data-chapter="Spiralia" aria-labelledby="t-principios">
+<div class="slide-head"><span class="tag">Quiénes somos · Cómo trabajamos</span><h2 id="t-principios">Cinco principios<br><em>que guían cada proyecto</em></h2></div>
+<div class="body-content">
+<div class="creed" data-stagger=".12">
+<div><span>01</span><h3>Primero, el negocio</h3><p>Venimos de la consultoría estratégica. Empezamos por entender de verdad el negocio, sus procesos y a su gente; la tecnología viene después.</p></div>
+<div><span>02</span><h3>Ambición transformadora</h3><p>No buscamos hacer lo mismo un poco más rápido, sino repensar cómo se trabaja. Lo incremental llega solo; lo transformador hay que diseñarlo.</p></div>
+<div><span>03</span><h3>Todo el valor de la IA</h3><p>Trabajamos las dos palancas: la eficiencia, hacer lo mismo con menos, y la eficacia, hacer mejor lo que importa y crecer.</p></div>
+<div><span>04</span><h3>Construimos, no solo recomendamos</h3><p>Nuestros FDE se sientan con los equipos y construyen con ellos, sobre su trabajo real.</p></div>
+<div><span>05</span><h3>Autonomía como meta</h3><p>Ayudamos a crear vuestro propio modelo de gobierno para que los equipos acaben creando y construyendo solos.</p></div>
+</div>
+<p class="why-motto">Nuestro mejor resultado:<br><em>equipos que ya no nos necesitan.</em></p>
+</div>
+<footer class="footer"><span>KPMG × Spiralia · AI Forward · Confidencial</span><span class="page"></span></footer>
+</section>
+
+<!-- 05 · El punto de partida -->
+<section id="golpe" class="slide" data-chapter="Contexto" aria-labelledby="t-golpe">
+<div class="slide-head"><span class="tag">El punto de partida</span><h2 id="t-golpe">La IA ya está en todas las mesas<br><em>En la cuenta de resultados, casi en ninguna</em></h2></div>
+<div class="body-content">
+<div class="big-contrast">
+<div><strong><b data-to="80">80</b><span>%</span></strong><p>de los encuestados dice que la IA le ha hecho más productivo</p></div>
+<div class="gap"><span>Entre una cifra y otra</span><b>el despliegue</b></div>
+<div><strong><b data-to="6">6</b><span>%</span></strong><p>atribuye a la IA al menos un 5 % de su EBIT y un valor significativo</p></div>
+</div>
+<p class="punchline">La IA ya ayuda a casi todas las personas.<br><em>Solo cambia la cuenta de resultados de unas pocas empresas.</em></p>
+<p class="six-note">Ese 6 % no se distingue por la IA que tiene, <b>sino por cómo y cuánto la despliega:</b> rediseña a fondo el trabajo en lugar de añadir IA a lo de siempre.</p>
+</div>
+<footer class="footer"><span>McKinsey, <i>The state of AI in 2026</i> (agosto de 2026), pp. 3, 4 y 17. Encuesta global a 1.719 participantes.</span><span class="page"></span></footer>
+</section>
+
+<!-- 06 · Pregunta: qué diferencia -->
+<section id="q-diferencia" class="slide cobalt question" data-chapter="Contexto" aria-labelledby="t-q1">
+<span class="qmark" aria-hidden="true">?</span>
+<div class="slide-head"><span class="tag">La primera gran pregunta</span><h2 id="t-q1">Si cualquier empresa puede comprar la misma IA, <em>¿qué la va a diferenciar?</em></h2></div>
+<div class="body-content"><p class="question-answer">No será la herramienta. Será lo que cada empresa consiga que la IA haga dentro de su trabajo.</p></div>
+<footer class="footer"><span>KPMG × Spiralia · AI Forward · Confidencial</span><span class="page"></span></footer>
+</section>
+
+<!-- 07 · La inteligencia se compra, la ventaja se despliega -->
+<section id="despliega" class="slide white" data-chapter="Contexto" aria-labelledby="t-despliega">
+<div class="slide-head"><span class="tag">La respuesta corta</span><h2 id="t-despliega">La inteligencia se compra<br><em>La ventaja se despliega</em></h2></div>
+<div class="body-content diverge">
+<svg class="dv-svg" viewBox="0 0 1000 440" role="img" aria-label="La misma IA llega por igual a cinco empresas; el valor que captura cada una diverge según cómo la despliega. Gráfico ilustrativo.">
+<path class="dv-line" pathLength="1" style="--d:.35s" d="M500 70 L120 160"/>
+<path class="dv-line" pathLength="1" style="--d:.42s" d="M500 70 L310 160"/>
+<path class="dv-line" pathLength="1" style="--d:.49s" d="M500 70 L500 160"/>
+<path class="dv-line" pathLength="1" style="--d:.56s" d="M500 70 L690 160"/>
+<path class="dv-line" pathLength="1" style="--d:.63s" d="M500 70 L880 160"/>
+<circle class="dv-model" style="--d:.1s" cx="500" cy="50" r="26"/>
+<text class="lbl-model dv-fade" style="--d:.2s" x="540" y="56">La misma IA, para todas</text>
+<circle class="dv-co" style="--d:1s" cx="120" cy="166" r="11"/>
+<circle class="dv-co" style="--d:1.05s" cx="310" cy="166" r="11"/>
+<circle class="dv-co" style="--d:1.1s" cx="500" cy="166" r="11"/>
+<circle class="dv-co" style="--d:1.15s" cx="690" cy="166" r="11"/>
+<circle class="dv-co" style="--d:1.2s" cx="880" cy="166" r="11"/>
+<text x="120" y="204" text-anchor="middle">Empresa A</text>
+<text x="310" y="204" text-anchor="middle">Empresa B</text>
+<text x="500" y="204" text-anchor="middle">Empresa C</text>
+<text x="690" y="204" text-anchor="middle">Empresa D</text>
+<text x="880" y="204" text-anchor="middle">Empresa E</text>
+<rect class="dv-bar" style="--d:1.5s" x="75" y="350" width="90" height="62"/>
+<rect class="dv-bar" style="--d:1.62s" x="265" y="302" width="90" height="110"/>
+<rect class="dv-bar" style="--d:1.74s" x="455" y="370" width="90" height="42"/>
+<rect class="dv-bar hi" style="--d:1.9s" x="645" y="236" width="90" height="176"/>
+<rect class="dv-bar" style="--d:1.86s" x="835" y="328" width="90" height="84"/>
+<line class="axis" x1="40" x2="960" y1="412" y2="412"/>
+<text class="dv-fade" style="--d:2.2s" x="40" y="436">Valor que captura cada una · ilustrativo</text>
+<text class="lbl-hi dv-fade" style="--d:2.6s" x="748" y="250">La despliega:</text>
+<text class="lbl-hi dv-fade" style="--d:2.6s" x="748" y="272">rediseña el trabajo</text>
+</svg>
+<div>
+<p class="intro" style="font-size:19px">El mismo modelo de IA está al alcance de todas. Lo que separa a unas de otras es cómo lo despliegan:</p>
+<div class="dims"><span class="chip">Dónde entra</span><span class="chip">Qué hace</span><span class="chip">Quién responde</span><span class="chip">Cómo se mide</span></div>
+<div class="share">
+<div class="share-row"><small>Las que más valor sacan</small><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span>casi 3 de cada 4</span></div>
+<div class="share-row"><small>El resto</small><span class="dots"><i class="on"></i><i></i><i></i><i></i></span><span>1 de cada 4</span></div>
+<p>han rediseñado a fondo sus procesos por la IA. <b>La diferencia no está en qué IA compran, sino en el trabajo que cambian.</b></p>
+</div>
+</div>
+</div>
+<footer class="footer"><span>McKinsey, <i>The state of AI in 2026</i>, p. 18. El gráfico de la izquierda es ilustrativo.</span><span class="page"></span></footer>
+</section>
+
+<!-- 08 · La eficiencia tiene techo -->
+<section id="techo" class="slide white" data-chapter="Contexto" aria-labelledby="t-techo">
+<div class="slide-head"><span class="tag">Eficiencia y eficacia</span><h2 id="t-techo">La eficiencia tiene techo<br><em>El crecimiento, no</em></h2></div>
+<div class="body-content">
+<div class="levers">
+<figure class="lever">
+<figcaption><small>EFICIENCIA</small><b>Hacer lo mismo con menos</b></figcaption>
+<svg class="lever-svg" viewBox="0 0 360 236" role="img" aria-label="El ahorro máximo posible llega, como mucho, al coste del proceso">
+<line class="axis" x1="16" x2="344" y1="200" y2="200"/>
+<rect class="bar-cost" x="58" y="56" width="96" height="144"/>
+<rect class="bar-save" x="206" y="62" width="96" height="138"/>
+<line class="ceil" x1="16" x2="344" y1="56" y2="56"/>
+<text class="ceil-lbl" x="344" y="44" text-anchor="end">Techo: el coste del proceso</text>
+<text x="106" y="222" text-anchor="middle">Coste del proceso</text>
+<text x="254" y="222" text-anchor="middle">Ahorro máximo</text>
+</svg>
+<p>Lo máximo que puede aportar la eficiencia es el coste de ese proceso.</p>
+</figure>
+<figure class="lever up">
+<figcaption><small>EFICACIA</small><b>Hacer mejor lo que importa</b></figcaption>
+<svg class="lever-svg" viewBox="0 0 360 236" role="img" aria-label="Hacer mejor el trabajo y crecer no tiene techo: la curva supera la línea del coste">
+<defs><marker id="arrowUp" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1e49e2"/></marker></defs>
+<line class="axis" x1="16" x2="344" y1="200" y2="200"/>
+<line class="ceil" x1="16" x2="344" y1="56" y2="56"/>
+<path class="growth" pathLength="1" marker-end="url(#arrowUp)" d="M20 196 C 110 192, 180 160, 228 112 S 300 30, 334 2"/>
+<g class="gdot" style="--d:.9s"><circle cx="96" cy="188" r="6"/><text x="104" y="180">Calidad</text></g>
+<g class="gdot" style="--d:1.25s"><circle cx="176" cy="156" r="6"/><text x="186" y="160">Mejores decisiones</text></g>
+<g class="gdot" style="--d:1.6s"><circle cx="234" cy="104" r="6"/><text x="246" y="110">Nuevos servicios</text></g>
+<g class="gdot" style="--d:1.95s"><circle cx="292" cy="44" r="6"/><text x="282" y="38" text-anchor="end">Más ingresos</text></g>
+<text class="ref-lbl" x="20" y="48">Coste del proceso</text>
+<text class="ceil-lbl nocap" x="314" y="12" text-anchor="end">Sin techo</text>
+</svg>
+<p>Hacer mejor el trabajo, decidir mejor y crecer no tiene techo.</p>
+</figure>
+</div>
+<div class="lever-proof">
+<div><strong>≈8<small> de cada 10</small></strong><p>encuestados dicen que su empresa busca eficiencia con la IA, sea o no de las que más valor sacan.</p></div>
+<div><strong><b data-to="74">74</b><small> %</small> <i>frente a</i> <b data-to="47">47</b><small> %</small></strong><p>De las que más valor sacan a la IA, el 74 % la usa también para crecer. En el resto, el 47 %.</p></div>
+<p class="lever-take"><b>Por eso trabajamos las dos palancas a la vez:</b> rediseñar procesos para ganar eficiencia y usar la IA para hacer mejor el trabajo y crecer.</p>
+</div>
+</div>
+<footer class="footer"><span>McKinsey, <i>The state of AI in 2026</i>, p. 18. Los dos gráficos son ilustrativos.</span><span class="page"></span></footer>
+</section>
+
+<!-- 09 · Pregunta: por qué no se nota -->
+<section id="q-plantilla" class="slide cobalt question" data-chapter="Respuesta" aria-labelledby="t-q2">
+<span class="qmark" aria-hidden="true">?</span>
+<div class="slide-head"><span class="tag">La segunda gran pregunta</span><h2 id="t-q2">Si la plantilla ya usa la IA, <em>¿por qué no se nota en la cuenta de resultados?</em></h2></div>
+<div class="body-content"><p class="question-answer">Porque saber usar una herramienta no cambia, por sí solo, cómo se hace el trabajo.</p></div>
+<footer class="footer"><span>KPMG × Spiralia · AI Forward · Confidencial</span><span class="page"></span></footer>
+</section>
+
+<!-- 10 · El trabajo real no cabe en un procedimiento -->
+<section id="realidad" class="slide" data-chapter="Respuesta" aria-labelledby="t-realidad">
+<div class="slide-head"><span class="tag">Lo que no se ve desde fuera</span><h2 id="t-realidad">El trabajo real<br><em>no cabe en un procedimiento</em></h2></div>
+<div class="body-content">
+<div class="real-stage" aria-label="Un procedimiento de tres pasos frente a la maraña del trabajo real">
+<svg class="real-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+<path class="clean" vector-effect="non-scaling-stroke" d="M24 13 L44 13 M56 13 L76 13"/>
+<path class="mess-line" pathLength="1" vector-effect="non-scaling-stroke" style="--d:1.9s" d="M18 18 C10 28 6 36 12 44 S30 52 24 66 S8 80 10 88 S28 96 34 88 S48 74 52 66 S36 50 40 44 S58 34 68 44 S88 30 91 44 S92 58 80 66 S96 80 88 88 S70 96 62 88 S54 70 50 18"/>
+<path class="mess-line" pathLength="1" vector-effect="non-scaling-stroke" style="--d:2.3s" d="M82 18 C86 28 94 34 91 44 M80 66 C70 58 60 60 52 66 M24 66 C30 76 40 80 34 88 M68 44 C64 56 58 58 52 66 M12 44 C22 40 30 42 40 44"/>
+</svg>
+<span class="real-label" style="left:0;top:-6px">El procedimiento</span>
+<span class="real-label" style="left:0;top:31%">El trabajo real</span>
+<span class="proc-step" style="--x:18;--y:13">Solicitud</span>
+<span class="proc-step" style="--x:50;--y:13">Revisión</span>
+<span class="proc-step" style="--x:82;--y:13">Aprobación</span>
+<span class="mess" style="--x:12;--y:44">Correo incompleto</span>
+<span class="mess warn" style="--x:40;--y:44">Excepción no escrita</span>
+<span class="mess" style="--x:68;--y:44">«Pregúntale a quien lo sabe»</span>
+<span class="mess" style="--x:91;--y:44">Escalado</span>
+<span class="mess" style="--x:24;--y:66">Excel paralelo</span>
+<span class="mess warn" style="--x:52;--y:66">Criterio experto</span>
+<span class="mess" style="--x:80;--y:66">Aprobación por correo</span>
+<span class="mess" style="--x:10;--y:88">Retrabajo</span>
+<span class="mess" style="--x:34;--y:88">Versión final_v3</span>
+<span class="mess" style="--x:62;--y:88">Copiar y pegar en el sistema</span>
+<span class="mess" style="--x:88;--y:88">Esperas</span>
+</div>
+<div class="reality-copy">
+<p><b>La formación enseña a usar la herramienta.</b> Es imprescindible, pero el procedimiento escrito casi nunca cuenta cómo se trabaja de verdad.</p>
+<p><b>El valor aparece al sentarse junto a quien hace el trabajo</b>, ver sus excepciones y su criterio, y rediseñarlo desde ahí.</p>
+</div>
+<p class="closing-line"><b>Desplegar</b> es conseguir que la IA asuma trabajo real: con usuarios reales, en los sistemas de la casa, con una persona donde importa y con un dueño que responde de ella.</p>
+</div>
+<footer class="footer"><span>Ejemplo ilustrativo de un proceso tipo.</span><span class="page"></span></footer>
+</section>
+
+<!-- 11 · Nuestra respuesta: un solo recorrido -->
+<section id="recorrido" class="slide white" data-chapter="Respuesta" aria-labelledby="t-recorrido">
+<div class="slide-head"><span class="tag">Nuestra respuesta</span><h2 id="t-recorrido">Del aula al trabajo real<br><em>Dos formas de ayudar, un solo recorrido</em></h2></div>
+<div class="body-content">
+<div class="route">
+<div class="leg reveal" style="--delay:.15s;grid-column:1"><small>1 · Formar por área</small><h3>La tracción</h3><p>Formación específica para cada área, sobre su trabajo y sus herramientas. Crea lenguaje común, hábito y champions, y hace aflorar dónde está el valor.</p><p class="eg">ING: toda la organización, del comité de dirección al contact center. Coca-Cola Europacific Partners: seis áreas.</p></div>
+<div class="leg reveal" style="--delay:.3s;grid-column:2"><small>2 · Transformar el área con FDE</small><h3>La implementación</h3><p>Un equipo de Spiralia se sienta con el área, entiende su día a día, decide con ella dónde entra la IA y construye los agentes y soluciones, rápido y junto al equipo. Después, los despliega y deja la capacidad en casa.</p><p class="eg">Es lo que hacemos hoy en ING y en Coca-Cola Europacific Partners: transformación completa de áreas, mano a mano con los equipos.</p></div>
+<div class="route-line" aria-hidden="true"></div>
+<ol class="route-stops g1" aria-label="Primer tramo"><li class="stop" style="--d:.5s"><b>S · Skill</b><span>Formar al área</span></li></ol>
+<ol class="route-stops g2" aria-label="Segundo tramo"><li class="stop" style="--d:.8s"><b>P · Pair</b><span>Entender su día a día</span></li><li class="stop" style="--d:.95s"><b>I · Identify</b><span>Decidir dónde entra la IA</span></li><li class="stop" style="--d:1.1s"><b>R · Rebuild</b><span>Construir con el equipo</span></li><li class="stop" style="--d:1.25s"><b>A · Assure</b><span>Demostrar que funciona</span></li><li class="stop" style="--d:1.4s"><b>L · Launch</b><span>Desplegar y dejar autonomía</span></li></ol>
+</div>
+<p class="route-note reveal" style="--delay:1.5s">Las iniciales de los seis pasos forman el nombre de nuestro método: <b>SPIRAL</b> (Skill · Pair · Identify · Rebuild · Assure · Launch). Lo verás paso a paso más adelante.</p>
+<div class="route-foot reveal" style="--delay:1.7s"><b>Según McKinsey</b><p>La oportunidad de los líderes es aprovechar la energía de una plantilla que ya sabe usar la IA para rediseñar el trabajo de principio a fin, rápido y a escala.</p></div>
+</div>
+<footer class="footer"><span>McKinsey, <i>The state of AI in 2026</i>, p. 14 (paráfrasis de Spiralia). ING y CCEP: programas con Spiralia.</span><span class="page"></span></footer>
+</section>
+
+<!-- 12 · Pregunta: quién decide -->
+<section id="q-quien" class="slide cobalt question" data-chapter="Respuesta" aria-labelledby="t-q3">
+<span class="qmark" aria-hidden="true">?</span>
+<div class="slide-head"><span class="tag">La tercera gran pregunta</span><h2 id="t-q3">¿Quién decide dónde entra la IA… <em>y quién la construye?</em></h2></div>
+<div class="body-content"><p class="question-answer">Ni solo Tecnología ni solo el negocio. Un perfil que une los dos mundos: el FDE.</p></div>
+<footer class="footer"><span>KPMG × Spiralia · AI Forward · Confidencial</span><span class="page"></span></footer>
+</section>
+
+<!-- 13 · El FDE -->
+<section id="fde" class="slide" data-chapter="Respuesta" aria-labelledby="t-fde">
+<div class="slide-head"><span class="tag">El perfil que une los dos mundos</span><h2 id="t-fde">El FDE<br><em>Negocio y construcción en la misma mesa</em></h2></div>
+<div class="body-content">
+<p class="fde-def"><b>FDE · Forward Deployed Engineer</b>, literalmente «ingeniero desplegado en primera línea». No trabaja desde un departamento de sistemas: se sienta con el equipo de negocio, entiende cómo se trabaja de verdad y construye allí mismo la solución.</p>
+<div class="worlds">
+<div class="world left"><small>EL MUNDO DEL NEGOCIO</small><ul><li style="--i:0">procesos</li><li style="--i:1">costes</li><li style="--i:2">incentivos</li><li style="--i:3">riesgo</li><li style="--i:4">adopción</li><li style="--i:5">valor</li></ul></div>
+<div class="fde-node"><b>FDE</b><span>Forward Deployed Engineer</span></div>
+<div class="world right"><small>EL MUNDO TÉCNICO</small><ul><li style="--i:0">modelos</li><li style="--i:1">sistemas</li><li style="--i:2">datos</li><li style="--i:3">integraciones</li><li style="--i:4">código</li><li style="--i:5">fiabilidad</li></ul></div>
+</div>
+<p class="worlds-note">Dos tipos de criterio que rara vez están en la misma persona.</p>
+<p class="closing-line">Tecnología sabe qué se puede construir. El negocio sabe qué importa. <b>Nosotros decidimos con vosotros dónde entra la IA, y la construimos.</b></p>
+</div>
+<footer class="footer"><span>Definiciones de Spiralia.</span><span class="page"></span></footer>
+</section>
+
+<!-- 14 · Pregunta: paso a paso -->
+<section id="q-paso" class="slide cobalt question" data-chapter="SPIRAL" aria-labelledby="t-q4">
+<span class="qmark" aria-hidden="true">?</span>
+<div class="slide-head"><span class="tag">La cuarta gran pregunta</span><h2 id="t-q4">¿Qué va a pasar exactamente, <em>paso a paso?</em></h2></div>
+<div class="body-content"><p class="question-answer">Lo hemos convertido en un método con nombre propio: <b>SPIRAL</b>.</p></div>
+<footer class="footer"><span>KPMG × Spiralia · AI Forward · Confidencial</span><span class="page"></span></footer>
+</section>
+
+<!-- 15 · Nube en motion -->
+<section id="nube" class="slide" data-chapter="SPIRAL" aria-labelledby="t-nube">
+<div class="slide-head"><span class="tag">Lo que se oye · dónde encaja</span><h2 id="t-nube">Formación, champions, agentes, pruebas, permisos…<br><em>Todo encuentra su sitio</em></h2></div>
+<div class="body-content">
+<p class="intro">Son las palabras de cualquier conversación sobre IA, casi siempre mezcladas. SPIRAL las ordena en seis pasos. <b>Al pasar el ratón, cada palabra se explica.</b></p>
+<div class="kw-stage" data-state="order">
+<div class="kw-rung"><div class="kw-label"><b><i>S</i>Skill</b><span>Formar el área</span></div><div class="kw-chips">
+<button type="button" class="kw" data-noise="1" data-def="Formación diseñada para un área concreta, con sus casos, sus documentos y sus herramientas." data-like="un traje a medida, no de talla única."><span>Formación por área</span></button>
+<button type="button" class="kw" data-noise="1" data-def="Que todo el equipo entienda lo mismo cuando se habla de IA." data-like="hablar el mismo idioma en la mesa."><span>Lenguaje común</span></button>
+<button type="button" class="kw" data-noise="2" data-def="Personas del área que van por delante y tiran del resto." data-like="los capitanes de cada equipo."><span>Champions</span></button>
+<button type="button" class="kw" data-noise="2" data-def="Lo que se le pide a la IA, con palabras propias." data-like="un encargo bien explicado."><span>Prompt</span></button>
+<button type="button" class="kw" data-noise="1" data-def="La lista de tareas y procesos donde el propio equipo ve que la IA puede ayudar." data-like="la lista de deseos, pero priorizada."><span>Mapa de oportunidades</span></button>
+</div></div>
+<div class="kw-rung"><div class="kw-label"><b><i>P</i>Pair</b><span>Emparejar y observar</span></div><div class="kw-chips">
+<button type="button" class="kw" data-noise="3" data-def="Forward Deployed Engineer: un perfil que se sienta con el negocio y construye allí mismo la solución." data-like="experto de negocio y constructor en la misma mesa."><span>FDE</span></button>
+<button type="button" class="kw" data-noise="2" data-def="Quien mejor conoce el trabajo, sus excepciones y el criterio que no está escrito." data-like="la memoria viva del proceso."><span>Experto del área</span></button>
+<button type="button" class="kw" data-noise="2" data-def="El equipo pequeño que forman el experto del área, el FDE y su sponsor." data-like="una pequeña startup dentro de casa."><span>Pod</span></button>
+<button type="button" class="kw" data-noise="2" data-def="Observar a alguien mientras trabaja, en su puesto y con sus herramientas." data-like="aprender el oficio mirando por encima del hombro."><span>Shadowing</span></button>
+<button type="button" class="kw" data-noise="1" data-def="El caso que se sale de la norma y que casi siempre se resuelve a mano." data-like="la letra pequeña del proceso."><span>Excepción</span></button>
+<button type="button" class="kw" data-noise="1" data-def="Cómo se hace de verdad, con sus atajos, esperas y Excels; no como dice el procedimiento." data-like="la cocina, no la carta."><span>Trabajo real</span></button>
+</div></div>
+<div class="kw-rung"><div class="kw-label"><b><i>I</i>Identify</b><span>Decidir dónde entra la IA</span></div><div class="kw-chips">
+<button type="button" class="kw" data-noise="2" data-def="Un trabajo concreto en el que la IA puede aportar valor." data-like="un encargo con nombre y apellidos."><span>Caso de uso</span></button>
+<button type="button" class="kw" data-noise="1" data-def="Elegir qué cambiar primero por valor, repetición, volumen y datos disponibles." data-like="empezar por lo que más pesa."><span>Priorización</span></button>
+<button type="button" class="kw" data-noise="2" data-def="Cómo se mide hoy el proceso, antes de tocarlo, para poder comparar después." data-like="la foto del antes."><span>Línea base</span></button>
+<button type="button" class="kw" data-noise="1" data-def="Para cada paso, decidir si basta una regla fija, si conviene un agente o si debe decidir una persona." data-like="el reparto de papeles."><span>Regla, agente o persona</span></button>
+<button type="button" class="kw" data-noise="1" data-def="Lo que la IA puede hacer y lo que no, por escrito." data-like="las líneas del campo."><span>Fronteras</span></button>
+</div></div>
+<div class="kw-rung"><div class="kw-label"><b><i>R</i>Rebuild</b><span>Rediseñar y construir</span></div><div class="kw-chips">
+<button type="button" class="kw" data-noise="2" data-def="Pensar el proceso desde el resultado, en lugar de automatizar el de siempre." data-like="hacer la casa nueva, no reformar la cocina."><span>Rediseño</span></button>
+<button type="button" class="kw" data-noise="3" data-def="IA que no se limita a responder: planifica, usa herramientas y actúa hasta terminar la tarea." data-like="alguien que no explica cómo hacerlo: lo hace."><span>Agente</span></button>
+<button type="button" class="kw" data-noise="2" data-def="Un procedimiento empaquetado, con instrucciones, plantillas y ejemplos, que la IA usa cuando toca." data-like="el manual del mejor profesional, pero que se ejecuta."><span>Skill</span></button>
+<button type="button" class="kw" data-noise="1" data-def="Conectar la solución con los sistemas y los datos que ya existen." data-like="enchufarla a la red de la casa."><span>Integración</span></button>
+<button type="button" class="kw" data-noise="1" data-def="Una primera versión que funciona y se mejora con quien la usa." data-like="la maqueta en la que ya se puede vivir."><span>Prototipo</span></button>
+<button type="button" class="kw" data-noise="1" data-def="Ciclos cortos de construir, probar y corregir." data-like="ensayar con público."><span>Iteración</span></button>
+</div></div>
+<div class="kw-rung"><div class="kw-label"><b><i>A</i>Assure</b><span>Demostrar que funciona</span></div><div class="kw-chips">
+<button type="button" class="kw" data-noise="3" data-def="Los exámenes que la solución aprueba antes de actuar y mientras actúa." data-like="casos con la respuesta buena firmada por su dueño."><span>Evals</span></button>
+<button type="button" class="kw" data-noise="2" data-def="Ejemplos reales, normales, raros y de riesgo, con la respuesta correcta." data-like="el examen con las soluciones."><span>Casos de prueba</span></button>
+<button type="button" class="kw" data-noise="2" data-def="El punto del proceso en el que decide una persona." data-like="la firma."><span>Human in the loop</span></button>
+<button type="button" class="kw" data-noise="1" data-def="Los límites que la IA no puede cruzar." data-like="los carriles de una autopista."><span>Guardarraíles</span></button>
+<button type="button" class="kw" data-noise="1" data-def="Cuando la IA no está segura o el caso es de riesgo, pasa a una persona." data-like="pedir ayuda a tiempo."><span>Escalado</span></button>
+</div></div>
+<div class="kw-rung"><div class="kw-label"><b><i>L</i>Launch</b><span>Lanzar y transferir</span></div><div class="kw-chips">
+<button type="button" class="kw" data-noise="3" data-def="La IA trabajando en el proceso real, con usuarios reales." data-like="salir del ensayo al escenario."><span>Despliegue</span></button>
+<button type="button" class="kw" data-noise="1" data-def="A qué datos y sistemas puede acceder la solución, y a cuáles no." data-like="las llaves que se le dan."><span>Permisos</span></button>
+<button type="button" class="kw" data-noise="1" data-def="Todo lo que hace la IA queda anotado y se puede revisar." data-like="la caja negra de un avión."><span>Registro</span></button>
+<button type="button" class="kw" data-noise="1" data-def="Poder volver a la situación anterior si algo falla." data-like="el botón de deshacer."><span>Marcha atrás</span></button>
+<button type="button" class="kw" data-noise="1" data-def="La persona de la firma que responde de la solución y de su resultado." data-like="el capitán del barco."><span>Dueño del proceso</span></button>
+<button type="button" class="kw" data-noise="2" data-def="Lo que la IA puede hacer sin pedir permiso. Crece a medida que hay evidencia." data-like="un permiso de conducir que se amplía con la experiencia."><span>Autonomía</span></button>
+<button type="button" class="kw" data-noise="2" data-def="Dejar en casa la solución, su manual y personas capaces de mantenerla." data-like="dar las llaves y enseñar a conducir."><span>Transferencia</span></button>
+</div></div>
+</div>
+<div class="kw-foot"><p class="kw-def" aria-live="polite"><b>FDE</b>Forward Deployed Engineer: un perfil que se sienta con el negocio y construye allí mismo la solución. <span>Es como experto de negocio y constructor en la misma mesa.</span></p><button class="kw-toggle" type="button">Ver la nube otra vez <span aria-hidden="true">↺</span></button></div>
+</div>
+<footer class="footer"><span>Definiciones de Spiralia para no técnicos.</span><span class="page"></span></footer>
+</section>
+
+<!-- 16 · SPIRAL de un vistazo -->
+<section id="spiral" class="slide white" data-chapter="SPIRAL" aria-labelledby="t-spiral">
+<div class="slide-head"><span class="tag">SPIRAL · El método de Spiralia</span><h2 id="t-spiral">Seis pasos, siempre en el mismo orden<br><em>Y cada vuelta sube un nivel</em></h2></div>
+<div class="body-content spiral-layout">
+<svg class="spiral-svg" viewBox="-6 66 484 432" role="img" aria-label="Espiral con los seis pasos de SPIRAL en la primera vuelta y las siguientes vueltas hacia fuera">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9fb3ea"/></marker></defs>
+<path id="turn2" class="turn2 later" pathLength="1" marker-end="url(#arrow)" d="M260.0 89.2 L272.1 88.4 L284.4 88.5 L296.7 89.5 L309.0 91.4 L321.2 94.1 L333.3 97.7 L345.1 102.3 L356.7 107.7 L367.9 113.9 L378.7 121.0 L389.1 128.9 L398.9 137.5 L408.2 146.9 L416.8 157.0 L424.8 167.7 L432.0 179.1 L438.4 191.0 L443.9 203.4 L448.6 216.3 L452.4 229.5 L455.3 243.1 L457.2 256.9 L458.2 270.9 L458.1 285.0 L457.0 299.2 L454.9 313.3 L451.8 327.3 L447.6 341.2 L442.5 354.8 L436.4 368.1 L429.3 381.0 L421.2 393.4 L412.3 405.3 L402.5 416.6 L391.8 427.2 L380.3 437.1 L368.1 446.2 L355.2 454.4 L341.7 461.8 L327.6 468.2 L313.1 473.6 L298.0 478.0 L282.7 481.3 L267.0 483.6 L251.2 484.7 L235.2 484.7 L219.2 483.6 L203.2 481.3 L187.3 477.9 L171.6 473.3 L156.3 467.6 L141.2 460.8 L126.7 452.9 L112.6 444.0 L99.2 434.0 L86.4 423.0 L74.4 411.1 L63.2 398.3 L52.9 384.7 L43.6 370.3 L35.2 355.2 L27.9 339.5 L21.7 323.2 L16.7 306.4 L12.8 289.3 L10.2 271.8 L8.7 254.1 L8.6 236.2 L9.7 218.3 L12.1 200.5 L15.8 182.8 L20.7 165.3"/>
+<text class="along later" dy="-10"><textPath href="#turn2" startOffset="4%">Siguiente vuelta · otro flujo · más autonomía · más áreas</textPath></text>
+<path class="turn1" pathLength="1" d="M260.0 196.0 L264.5 195.0 L269.2 194.3 L274.0 193.9 L278.9 193.9 L283.9 194.3 L288.9 195.0 L293.9 196.2 L298.9 197.7 L303.9 199.6 L308.8 201.9 L313.5 204.6 L318.1 207.6 L322.6 211.1 L326.8 214.9 L330.8 219.1 L334.6 223.6 L338.0 228.5 L341.2 233.6 L344.0 239.1 L346.4 244.8 L348.4 250.7 L350.1 256.9 L351.2 263.2 L352.0 269.7 L352.2 276.3 L352.0 282.9 L351.3 289.7 L350.2 296.4 L348.5 303.1 L346.3 309.8 L343.6 316.4 L340.4 322.8 L336.7 329.0 L332.5 335.1 L327.8 340.8 L322.7 346.3 L317.2 351.5 L311.2 356.3 L304.9 360.8 L298.1 364.8 L291.1 368.3 L283.7 371.4 L276.0 373.9 L268.1 375.9 L260.0 377.4 L251.7 378.3 L243.3 378.6 L234.8 378.3 L226.3 377.4 L217.8 375.9 L209.3 373.8 L201.0 371.0 L192.8 367.6 L184.7 363.6 L176.9 359.0 L169.4 353.8 L162.2 348.1 L155.3 341.8 L148.9 334.9 L142.9 327.6 L137.4 319.8 L132.4 311.5 L128.0 302.9 L124.2 293.9 L121.0 284.5 L118.4 274.9 L116.6 265.0 L115.4 254.9 L114.9 244.8 L115.2 234.5 L116.1 224.1 L117.9 213.8 L120.3 203.6 L123.5 193.4 L127.5 183.5 L132.2 173.8 L137.6 164.3 L143.6 155.2 L150.4 146.5 L157.8 138.2 L165.9 130.4 L174.5 123.2 L183.7 116.5 L193.4 110.5 L203.6 105.1 L214.2 100.4 L225.2 96.4 L236.6 93.2 L248.2 90.8 L260.0 89.2"/>
+<text class="core later" x="246" y="272">SPIRAL</text>
+<g class="st first" style="--f:0"><circle cx="260" cy="196" r="21"/><text x="260" y="196">S</text></g>
+<g class="st" style="--f:.105"><circle cx="330.8" cy="219.1" r="21"/><text x="330.8" y="219.1">P</text></g>
+<g class="st" style="--f:.235"><circle cx="346.3" cy="309.8" r="21"/><text x="346.3" y="309.8">I</text></g>
+<g class="st" style="--f:.389"><circle cx="260" cy="377.4" r="21"/><text x="260" y="377.4">R</text></g>
+<g class="st" style="--f:.568"><circle cx="142.9" cy="327.6" r="21"/><text x="142.9" y="327.6">A</text></g>
+<g class="st" style="--f:.771"><circle cx="127.5" cy="183.5" r="21"/><text x="127.5" y="183.5">L</text></g>
+</svg>
+<div>
+<div class="spiral-table" data-stagger=".09">
+<div class="hd"><span></span><span>Paso</span><span>Lo que queda al terminar</span></div>
+<div><span class="sl">S</span><h3><small>SKILL</small>Formar el área</h3><p>Equipo activado y mapa de oportunidades</p></div>
+<div><span class="sl">P</span><h3><small>PAIR</small>Emparejar y observar</h3><p>Mapa real del trabajo</p></div>
+<div><span class="sl">I</span><h3><small>IDENTIFY</small>Decidir dónde entra la IA</h3><p>Caso elegido, fronteras y línea base</p></div>
+<div><span class="sl">R</span><h3><small>REBUILD</small>Rediseñar y construir</h3><p>Una solución que funciona con casos reales</p></div>
+<div><span class="sl">A</span><h3><small>ASSURE</small>Demostrar que funciona</h3><p>Informe de evidencia y decisión</p></div>
+<div><span class="sl">L</span><h3><small>LAUNCH</small>Lanzar y transferir</h3><p>Solución en operación, con dueño</p></div>
+</div>
+<p class="spiral-note"><b>S</b> abre el camino en cada área. <b>P-I-R-A-L</b> se repite por cada flujo de trabajo, en ciclos cortos. Cada vuelta deja una solución en marcha y más capacidad en casa.</p>
+</div>
+</div>
+<footer class="footer"><span>SPIRAL: Skill · Pair · Identify · Rebuild · Assure · Launch. La espiral de Spiralia, convertida en método.</span><span class="page"></span></footer>
+</section>
+
+<!-- 17 · Cada vuelta -->
+<section id="vuelta" class="slide" data-chapter="SPIRAL" aria-labelledby="t-vuelta">
+<div class="slide-head"><span class="tag">SPIRAL · Cada vuelta</span><h2 id="t-vuelta">Una vuelta, seis momentos<br><em>Con el equipo, no para el equipo</em></h2></div>
+<div class="body-content">
+<p class="intro">Así vive el área cada vuelta de la espiral: el experto y el FDE avanzan juntos, de la primera conversación a la solución en uso.</p>
+<div class="cycle" style="--pos:1">
+<div class="cycle-track" aria-hidden="true"><span class="pair-dot"><i></i><i></i></span></div>
+<ol class="stations">
+<li class="station on"><span class="n">01</span><b>Emparejar</b><span class="map">P</span><p>El FDE y el experto del área forman pareja.</p></li>
+<li class="station on"><span class="n">02</span><b>Observar</b><span class="map">P</span><p>El FDE vive el día a día: excepciones, atajos y criterio.</p></li>
+<li class="station on"><span class="n">03</span><b>Priorizar</b><span class="map">I</span><p>Se elige qué cambiar por valor, repetición y datos.</p></li>
+<li class="station on"><span class="n">04</span><b>Construir</b><span class="map">R</span><p>Agentes y flujos, junto a quien hace el trabajo.</p></li>
+<li class="station on"><span class="n">05</span><b>Validar</b><span class="map">A</span><p>Casos reales, varios usuarios y fallos a la vista.</p></li>
+<li class="station on"><span class="n">06</span><b>Desplegar</b><span class="map">L</span><p>En uso real, con supervisión y un dueño.</p></li>
+</ol>
+</div>
+<div class="legend-pair"><span><i style="background:var(--navy)"></i>Experto del área</span><span><i style="background:var(--cobalt)"></i>FDE de Spiralia</span></div>
+<p class="loop-back"><b>↺</b> Al terminar, la espiral sigue: siguiente flujo de trabajo, otra vuelta, un nivel más arriba.</p>
+</div>
+<footer class="footer"><span>KPMG × Spiralia · AI Forward · Confidencial</span><span class="page"></span></footer>
+</section>
+
+<!-- 18 · S · Skill -->
+<section id="paso-s" class="slide step" data-chapter="SPIRAL" aria-labelledby="t-s">
+<div class="slide-head"><span class="tag">SPIRAL · Paso 1 de 6 · S · Skill</span><h2 id="t-s">Formar el área<br><em>sobre su propio trabajo</em></h2><p class="claim">La tracción: que cada área sepa usar la IA en lo suyo, no en ejemplos genéricos.</p></div>
+<div class="body-content step-layout">
+<aside class="step-side">
+<ol class="spiral-steps" aria-label="Paso de SPIRAL"><li class="now" aria-current="step"><b>S</b><span>Skill</span></li><li><b>P</b><span>Pair</span></li><li><b>I</b><span>Identify</span></li><li><b>R</b><span>Rebuild</span></li><li><b>A</b><span>Assure</span></li><li><b>L</b><span>Launch</span></li></ol>
+<div class="side-block"><small>QUIÉN PARTICIPA</small><p><b>KPMG:</b> todo el equipo del área, su dirección y sus champions.</p><p><b>Spiralia:</b> formadores y coaches.</p></div>
+<div class="side-block deliv"><small>ENTREGABLE</small><p>Equipo activado, champions identificados y mapa de oportunidades del área.</p></div>
+</aside>
+<div class="step-main">
+<div class="rows" data-stagger=".1">
+<div><span>Qué pasa</span><p>Formación específica para el área, con sus casos, sus documentos y las herramientas que ya tiene la firma. Práctica guiada desde el primer minuto.</p></div>
+<div><span>Qué vive el equipo</span><p>Aprende usando la IA en su propio trabajo. Y empieza a señalar dónde le duele y qué podría hacerse de otra manera.</p></div>
+<div class="ask"><span>La pregunta que responde</span><p>«¿Dónde nos duele, y qué podríamos hacer distinto?»</p></div>
+<div><span>Lo que ya hemos visto</span><p>En Coca-Cola Europacific Partners, formar a seis áreas hizo aflorar <b>218 casos de uso</b> identificados por los propios equipos.</p></div>
+</div>
+<blockquote class="rule reveal" style="--delay:.6s"><span>LA REGLA</span><p>No se transforma lo que nadie sabe usar.</p></blockquote>
+</div>
+</div>
+<footer class="footer"><span>Programa CCEP Iberia × Spiralia, julio de 2026.</span><span class="page"></span></footer>
+</section>
+
+<!-- 19 · P · Pair -->
+<section id="paso-p" class="slide step white" data-chapter="SPIRAL" aria-labelledby="t-p">
+<div class="slide-head"><span class="tag">SPIRAL · Paso 2 de 6 · P · Pair</span><h2 id="t-p">¿Y si el experto que más sabe<br><em>tuviera al lado a quien sabe construir?</em></h2><p class="claim">Un FDE de Spiralia forma pareja con los expertos del área y observa cómo se trabaja de verdad.</p></div>
+<div class="body-content step-layout">
+<aside class="step-side">
+<ol class="spiral-steps" aria-label="Paso de SPIRAL"><li class="done"><b>S</b><span>Skill</span></li><li class="now" aria-current="step"><b>P</b><span>Pair</span></li><li><b>I</b><span>Identify</span></li><li><b>R</b><span>Rebuild</span></li><li><b>A</b><span>Assure</span></li><li><b>L</b><span>Launch</span></li></ol>
+<div class="side-block"><small>QUIÉN PARTICIPA</small><p><b>KPMG:</b> los expertos del área y un sponsor.</p><p><b>Spiralia:</b> el FDE.</p></div>
+<div class="side-block deliv"><small>ENTREGABLE</small><p>El mapa real del trabajo: pasos, excepciones, sistemas, esperas y criterio no escrito.</p></div>
+</aside>
+<div class="step-main">
+<div class="rows" data-stagger=".1">
+<div><span>Qué pasa</span><p>El FDE se sienta con el equipo, en su puesto y con sus herramientas: correos, Excel, sistemas y aprobaciones. Sigue los casos de principio a fin, también los raros.</p></div>
+<div><span>Qué vive el equipo</span><p>Alguien que pregunta «¿y esto por qué se hace así?» y no se conforma con el procedimiento escrito.</p></div>
+<div class="ask"><span>La pregunta que responde</span><p>«¿Cómo se trabaja de verdad aquí?»</p></div>
+<div><span>La idea clave</span><p>Los mejores casos no se ven desde un catálogo: aparecen al sentarse junto a quien hace el trabajo.</p></div>
+</div>
+<blockquote class="rule reveal" style="--delay:.6s"><span>LA REGLA</span><p>No se puede rediseñar lo que no se ha visto.</p></blockquote>
+</div>
+</div>
+<footer class="footer"><span>KPMG × Spiralia · AI Forward · Confidencial</span><span class="page"></span></footer>
+</section>
+
+<!-- 20 · I · Identify -->
+<section id="paso-i" class="slide step" data-chapter="SPIRAL" aria-labelledby="t-i">
+<div class="slide-head"><span class="tag">SPIRAL · Paso 3 de 6 · I · Identify</span><h2 id="t-i">Decidir dónde entra la IA<br><em>y dónde no</em></h2><p class="claim">Somos nosotros quienes proponemos dónde entra la IA. Lo decidimos con vosotros.</p></div>
+<div class="body-content step-layout">
+<aside class="step-side">
+<ol class="spiral-steps" aria-label="Paso de SPIRAL"><li class="done"><b>S</b><span>Skill</span></li><li class="done"><b>P</b><span>Pair</span></li><li class="now" aria-current="step"><b>I</b><span>Identify</span></li><li><b>R</b><span>Rebuild</span></li><li><b>A</b><span>Assure</span></li><li><b>L</b><span>Launch</span></li></ol>
+<div class="side-block"><small>QUIÉN PARTICIPA</small><p><b>KPMG:</b> el experto, el sponsor y, cuando toca, IT, Riesgos y People.</p><p><b>Spiralia:</b> el FDE.</p></div>
+<div class="side-block deliv"><small>ENTREGABLE</small><p>Caso elegido, fronteras por escrito, línea base y valor esperado.</p></div>
+</aside>
+<div class="step-main">
+<div class="rows" data-stagger=".1">
+<div><span>Qué pasa</span><p>Se priorizan las oportunidades por valor, repetición, volumen y datos disponibles. Y, paso a paso del proceso, se decide quién hace cada cosa.</p></div>
+<div class="ask"><span>La pregunta que responde</span><p>«¿Dónde entra la IA, y dónde no?»</p></div>
+</div>
+<div class="visual reveal" style="--delay:.45s"><small>Para cada paso del proceso</small>
+<div class="trio">
+<div style="--c:#6b7a90"><b>Una regla fija</b><small>Software de siempre</small><p>Cuando las entradas y el resultado esperado son predecibles.</p></div>
+<div style="--c:var(--cobalt)"><b>Un agente</b><small>IA</small><p>Cuando el objetivo está claro, pero cambian los datos, el camino o las acciones.</p></div>
+<div style="--c:var(--navy)"><b>Una persona</b><small>Criterio humano</small><p>Cuando hay ambigüedad, responsabilidad o una consecuencia que no se puede deshacer.</p></div>
+</div></div>
+<blockquote class="rule reveal" style="--delay:.7s"><span>LA REGLA</span><p>No todo necesita un agente.</p></blockquote>
+</div>
+</div>
+<footer class="footer"><span>KPMG × Spiralia · AI Forward · Confidencial</span><span class="page"></span></footer>
+</section>
+
+<!-- 21 · R · Rebuild -->
+<section id="paso-r" class="slide step white" data-chapter="SPIRAL" aria-labelledby="t-r">
+<div class="slide-head"><span class="tag">SPIRAL · Paso 4 de 6 · R · Rebuild</span><h2 id="t-r">Rediseñar el trabajo<br><em>y construirlo con el equipo</em></h2><p class="claim">Se rediseña el flujo completo, no solo una tarea, y el FDE construye los agentes y las soluciones en ciclos cortos.</p></div>
+<div class="body-content step-layout">
+<aside class="step-side">
+<ol class="spiral-steps" aria-label="Paso de SPIRAL"><li class="done"><b>S</b><span>Skill</span></li><li class="done"><b>P</b><span>Pair</span></li><li class="done"><b>I</b><span>Identify</span></li><li class="now" aria-current="step"><b>R</b><span>Rebuild</span></li><li><b>A</b><span>Assure</span></li><li><b>L</b><span>Launch</span></li></ol>
+<div class="side-block"><small>QUIÉN PARTICIPA</small><p><b>KPMG:</b> el experto prueba y corrige cada versión.</p><p><b>Spiralia:</b> el FDE construye.</p></div>
+<div class="side-block deliv"><small>ENTREGABLE</small><p>Una solución que funciona con casos reales del área.</p></div>
+</aside>
+<div class="step-main">
+<div class="rows" data-stagger=".1">
+<div><span>Qué pasa</span><p>El flujo se dibuja de nuevo desde el resultado. El FDE construye sobre los sistemas y las herramientas de la casa, y enseña cada versión al equipo.</p></div>
+<div><span>Qué vive el equipo</span><p>Ve su propio proceso funcionando de otra manera y lo corrige sobre la marcha.</p></div>
+<div class="ask"><span>La pregunta que responde</span><p>«¿Funciona en nuestro día a día?»</p></div>
+</div>
+<div class="visual reveal" style="--delay:.45s"><small>Acelerar una tarea no es transformar el trabajo</small>
+<div class="task-flow">
+<div><b>Automatizar una tarea</b><div class="flow"><span>Recibir</span><i>→</i><span class="ai">Redactar con IA</span><i>→</i><span>Revisar</span><i>→</i><span>Registrar</span></div><p>Un paso más rápido. El proceso no cambia.</p></div>
+<div><b>Rediseñar el flujo</b><div class="flow"><span class="ai">Entrada validada</span><i>→</i><span class="ai">Propuesta del agente</span><i>→</i><span class="hu">Decide una persona</span><i>→</i><span>Sistema al día</span></div><p>Menos pasos, decisiones nuevas e IA dentro del proceso.</p></div>
+</div></div>
+<blockquote class="rule reveal" style="--delay:.7s"><span>LA REGLA</span><p>Se construye con el equipo, no para el equipo.</p></blockquote>
+</div>
+</div>
+<footer class="footer"><span>KPMG × Spiralia · AI Forward · Confidencial</span><span class="page"></span></footer>
+</section>
+
+<!-- 22 · A · Assure -->
+<section id="paso-a" class="slide step" data-chapter="SPIRAL" aria-labelledby="t-a">
+<div class="slide-head"><span class="tag">SPIRAL · Paso 5 de 6 · A · Assure</span><h2 id="t-a">La confianza no se declara<br><em>se demuestra</em></h2><p class="claim">Antes de usarla de verdad, la solución se examina con casos reales del área.</p></div>
+<div class="body-content step-layout">
+<aside class="step-side">
+<ol class="spiral-steps" aria-label="Paso de SPIRAL"><li class="done"><b>S</b><span>Skill</span></li><li class="done"><b>P</b><span>Pair</span></li><li class="done"><b>I</b><span>Identify</span></li><li class="done"><b>R</b><span>Rebuild</span></li><li class="now" aria-current="step"><b>A</b><span>Assure</span></li><li><b>L</b><span>Launch</span></li></ol>
+<div class="side-block"><small>QUIÉN PARTICIPA</small><p><b>KPMG:</b> el experto, que firma las respuestas buenas, y usuarios del área.</p><p><b>Spiralia:</b> el FDE.</p></div>
+<div class="side-block deliv"><small>ENTREGABLE</small><p>Informe de evidencia: qué acierta, qué falla y cuándo pide ayuda. Y una decisión: lanzar, iterar o parar.</p></div>
+</aside>
+<div class="step-main">
+<div class="rows" data-stagger=".1">
+<div><span>Qué pasa</span><p>Se reúnen casos reales, normales, raros y de riesgo, con la respuesta buena firmada por el experto. Se mide acierto, calidad y errores, y se comprueba cuándo pasa el caso a una persona.</p></div>
+<div class="ask"><span>La pregunta que responde</span><p>«¿Podemos confiar en ello?»</p></div>
+</div>
+<div class="visual reveal" style="--delay:.4s"><small>Cómo se examina · matriz ilustrativa</small>
+<table class="evals">
+<thead><tr><th>Caso</th><th>Dato correcto</th><th>Pasos completos</th><th>Igual que el experto</th><th>¿Qué hace?</th></tr></thead>
+<tbody>
+<tr style="--i:0"><td>Normal</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td><td class="act">Actúa</td></tr>
+<tr style="--i:1"><td>Caso límite</td><td class="ok">✓</td><td class="ok">✓</td><td class="ko">✗</td><td class="esc">Pasa a una persona</td></tr>
+<tr style="--i:2"><td>Información incompleta</td><td class="ko">✗</td><td class="na">—</td><td class="na">—</td><td class="esc">Pasa a una persona</td></tr>
+<tr style="--i:3"><td>Petición ambigua</td><td class="ok">✓</td><td class="ko">✗</td><td class="na">—</td><td class="esc">Pasa a una persona</td></tr>
+<tr style="--i:4"><td>Alto riesgo</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td><td class="esc">Decide una persona</td></tr>
+</tbody></table>
+<p class="evals-note">Pasar el caso a una persona también es una respuesta correcta.</p></div>
+<blockquote class="rule reveal" style="--delay:.8s"><span>LA REGLA</span><p>No se confía en lo que no se ha medido.</p></blockquote>
+</div>
+</div>
+<footer class="footer"><span>Matriz ilustrativa del método.</span><span class="page"></span></footer>
+</section>
+
+<!-- 23 · L · Launch -->
+<section id="paso-l" class="slide step white" data-chapter="SPIRAL" aria-labelledby="t-l">
+<div class="slide-head"><span class="tag">SPIRAL · Paso 6 de 6 · L · Launch</span><h2 id="t-l">La autonomía se gana<br><em>con evidencia</em></h2><p class="claim">La solución entra en uso real poco a poco y se queda en manos de su dueño en la firma.</p></div>
+<div class="body-content step-layout">
+<aside class="step-side">
+<ol class="spiral-steps" aria-label="Paso de SPIRAL"><li class="done"><b>S</b><span>Skill</span></li><li class="done"><b>P</b><span>Pair</span></li><li class="done"><b>I</b><span>Identify</span></li><li class="done"><b>R</b><span>Rebuild</span></li><li class="done"><b>A</b><span>Assure</span></li><li class="now" aria-current="step"><b>L</b><span>Launch</span></li></ol>
+<div class="side-block"><small>QUIÉN PARTICIPA</small><p><b>KPMG:</b> el dueño del proceso, los usuarios, IT, Riesgos y People.</p><p><b>Spiralia:</b> el FDE, hasta el traspaso.</p></div>
+<div class="side-block deliv"><small>ENTREGABLE</small><p>Solución en operación, con dueño, métricas y manual. Y la siguiente vuelta en marcha.</p></div>
+</aside>
+<div class="step-main">
+<div class="rows" data-stagger=".1">
+<div><span>Qué pasa</span><p>Primero, uso limitado y supervisado. Se miden la adopción y el valor frente a la línea base. Después, el traspaso: manual de operación, pruebas y formación para quien la va a mantener.</p></div>
+<div class="ask"><span>La pregunta que responde</span><p>«¿Quién la opera mañana?»</p></div>
+</div>
+<div class="visual reveal" style="--delay:.35s"><small>Cinco niveles de autonomía · se sube uno solo cuando hay evidencia</small>
+<div class="ladder">
+<div style="--i:0"><small>Nivel 1</small><b>Observa</b><p>Trabaja en paralelo; no toca nada.</p></div>
+<div style="--i:1"><small>Nivel 2</small><b>Sugiere</b><p>Propone; la persona decide.</p></div>
+<div style="--i:2"><small>Nivel 3</small><b>Hace con aprobación</b><p>Ejecuta lo que una persona aprueba.</p></div>
+<div style="--i:3"><small>Nivel 4</small><b>Hace con límites</b><p>Actúa sola dentro de unos márgenes.</p></div>
+<div style="--i:4"><small>Nivel 5</small><b>Hace y avisa</b><p>Autonomía amplia, con registro y revisión.</p></div>
+</div></div>
+<blockquote class="rule reveal" style="--delay:.9s"><span>LA REGLA</span><p>La autonomía se gana con evidencia.</p></blockquote>
+</div>
+</div>
+<footer class="footer"><span>KPMG × Spiralia · AI Forward · Confidencial</span><span class="page"></span></footer>
+</section>
+
+<!-- 24 · Deployed by design -->
+<section id="by-design" class="slide white" data-chapter="SPIRAL" aria-labelledby="t-design">
+<div class="slide-head"><span class="tag">Deployed by design</span><h2 id="t-design">Con control desde el primer día<br><em>Seis compromisos, en lenguaje claro</em></h2></div>
+<div class="body-content">
+<p class="intro">«By design» quiere decir que la seguridad y el control no se añaden al final: vienen incluidos desde el principio.</p>
+<div class="pledges" data-stagger=".1">
+<div><span class="pico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><h3>Nada sale de casa</h3><p>Construimos dentro de los sistemas de la firma, con las herramientas que aprueba IT.</p><small>Es como trabajar en vuestra oficina, con vuestras llaves.</small></div>
+<div><span class="pico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16"/><path d="M14.5 4.5l3 3L8 17l-4 1 1-4z"/></svg></span><h3>Lo importante lo firma una persona</h3><p>La IA prepara y propone. Donde hay criterio, riesgo o cliente, decide una persona.</p><small>Es como un buen asistente: lo deja todo listo, pero no firma.</small></div>
+<div><span class="pico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span><h3>Todo queda anotado</h3><p>Siempre se puede ver qué hizo la IA y por qué.</p><small>Es como la caja negra de un avión.</small></div>
+<div><span class="pico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h5v-5h5v-5h5V5h3"/></svg></span><h3>La confianza se gana poco a poco</h3><p>La IA empieza observando y solo hace más cuando demuestra que acierta.</p><small>Es como un nuevo fichaje: primero acompaña, luego ayuda y después hace.</small></div>
+<div><span class="pico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg></span><h3>Siempre se puede deshacer</h3><p>Cualquier solución se puede pausar o retirar sin parar el trabajo.</p><small>Es como el botón de deshacer.</small></div>
+<div><span class="pico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><h3>Siempre hay un responsable</h3><p>Cada solución tiene una persona de la firma que responde de ella.</p><small>Es como el capitán de un barco.</small></div>
+</div>
+</div>
+<footer class="footer"><span>Compromisos de diseño de Spiralia.</span><span class="page"></span></footer>
+</section>
+
+<!-- 25 · Un caso, de principio a fin -->
+<section id="caso" class="slide" data-chapter="Práctica" aria-labelledby="t-caso">
+<div class="slide-head"><span class="tag">En la práctica · Ejemplo ilustrativo</span><h2 id="t-caso">Un caso, de principio a fin<br><em>La propuesta comercial</em></h2><p class="claim">Un proceso que vive cualquier socio o director: de la petición de un cliente a la propuesta lista para firmar.</p></div>
+<div class="body-content">
+<div class="case">
+<div class="case-lanes">
+<div class="lane old"><small>HOY <em class="lane-sum">· esperas, versiones y retrabajo</em></small><div class="track"><span class="doc" aria-hidden="true"><svg viewBox="0 0 24 30"><path d="M3 1h12l6 6v22H3z"/><path d="M15 1v6h6"/><path d="M7 14h10M7 18h10M7 22h6"/></svg></span><ol>
+<li>La petición llega por correo</li>
+<li>Buscar credenciales en carpetas y correos <i>¿quién tenía la de…?</i></li>
+<li class="hold">Pedir CV y referencias a varios equipos <i>esperas</i></li>
+<li>Copiar y adaptar la última propuesta <i>versiones</i></li>
+<li>Revisar formato, marca y cumplimiento <i>retrabajo</i></li>
+<li class="hold">Aprobaciones por correo <i>esperas</i></li>
+</ol></div></div>
+<div class="lane new"><small>CON SPIRAL <em class="lane-sum">· el agente prepara, una persona decide</em></small><div class="track"><span class="doc" aria-hidden="true"><svg viewBox="0 0 24 30"><path d="M3 1h12l6 6v22H3z"/><path d="M15 1v6h6"/><path d="M7 14h10M7 18h10M7 22h6"/></svg></span><ol>
+<li class="si"><span class="who si">Sistema</span><br>La petición entra en un único sitio</li>
+<li class="ag"><span class="who ag">Agente</span><br>Extrae los requisitos y propone un índice</li>
+<li class="ag"><span class="who ag">Agente</span><br>Reúne credenciales y CV, cada uno con su fuente</li>
+<li class="ag"><span class="who ag">Agente</span><br>Prepara el borrador en el formato de la firma</li>
+<li class="pe"><span class="who pe">Persona</span><br>El director decide enfoque, equipo y precio</li>
+<li class="pe"><span class="who pe">Persona</span><br>Comprobaciones de riesgo y firma</li>
+</ol></div></div>
+<button class="case-replay" type="button">Ver el caso otra vez <span aria-hidden="true">↺</span></button>
+</div>
+<div class="log" aria-label="Registro de evidencias del ejemplo"><small>REGISTRO DE EVIDENCIAS</small><ol>
+<li>Petición recibida y registrada</li>
+<li>Requisitos extraídos y numerados</li>
+<li>Credenciales propuestas, cada una con su fuente</li>
+<li>Borrador generado en la plantilla de la firma</li>
+<li class="wait">En pausa: decisión del director</li>
+<li>Enfoque, equipo y precio aprobados</li>
+<li>Comprobaciones de riesgo completadas</li>
+<li>Propuesta lista para firma, con el registro completo</li>
+</ol></div>
+</div>
+<div class="case-method reveal" style="--delay:2.4s">
+<p><b>P</b>Observar a varios directores preparando propuestas de verdad.</p>
+<p><b>I</b>Decidir qué hace el agente y qué decide siempre el director.</p>
+<p><b>R</b>Construirlo sobre las plantillas y repositorios de la firma.</p>
+<p><b>A</b>Probarlo con propuestas pasadas, revisadas por un director.</p>
+<p><b>L</b>Lanzarlo con un grupo reducido y medir frente a la línea base.</p>
+</div>
+</div>
+<footer class="footer"><span>Ejemplo ilustrativo: no describe procesos internos de KPMG ni promete ahorros. Los resultados se miden en la fase A frente a la línea base del área.</span><span class="page"></span></footer>
+</section>
+
+<!-- 26 · Pregunta: autonomía -->
+<section id="q-autonomia" class="slide cobalt question" data-chapter="Autonomía" aria-labelledby="t-q5">
+<span class="qmark" aria-hidden="true">?</span>
+<div class="slide-head"><span class="tag">La quinta gran pregunta</span><h2 id="t-q5">¿Y si nuestro objetivo fuera <em>que dejarais de necesitarnos?</em></h2></div>
+<div class="body-content"><p class="question-answer">Lo es. Cada vuelta de SPIRAL deja a vuestros equipos más capaces de seguir creando y construyendo solos.</p></div>
+<footer class="footer"><span>KPMG × Spiralia · AI Forward · Confidencial</span><span class="page"></span></footer>
+</section>
+
+<!-- 27 · Modelo de gobierno -->
+<section id="gobierno" class="slide white" data-chapter="Autonomía" aria-labelledby="t-gobierno">
+<div class="slide-head"><span class="tag">Autonomía · El modelo de gobierno</span><h2 id="t-gobierno">Un modelo de gobierno propio<br><em>para seguir creando sin depender de nadie</em></h2></div>
+<div class="body-content">
+<p class="intro">Además de las soluciones, construimos con vosotros las reglas del juego: quién hace qué, cómo se trabaja y con qué herramientas. Es lo que convierte unos cuantos casos de éxito en una capacidad de la firma.</p>
+<div class="gov">
+<article class="reveal" style="--delay:.15s"><span class="pico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c.8-3.5 3.2-5.5 6-5.5s5.2 2 6 5.5"/><path d="M14.5 15.2c.8-.5 1.6-.7 2.5-.7 2.3 0 4.1 1.7 4.8 4.5"/></svg></span><small>01</small><h3>Roles y responsabilidades</h3><p class="gov-q">Quién propone, quién decide, quién construye y quién responde.</p><ul style="--b:.5s"><li>Un sponsor en cada área</li><li>Un dueño para cada solución</li><li>Champions que impulsan la adopción</li><li>Constructores internos: vuestros propios FDE</li><li>Un comité que fija prioridades y recursos</li></ul></article>
+<article class="reveal" style="--delay:.3s"><span class="pico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M7.3 11l9.4-5M7.3 13l9.4 5"/></svg></span><small>02</small><h3>Procesos</h3><p class="gov-q">Cómo nace, se prueba y se despliega una solución.</p><ul style="--b:.9s"><li>Cómo entra una idea y cómo se prioriza</li><li>Qué pruebas supera antes de lanzarse</li><li>Cuándo gana autonomía</li><li>Cómo se mide su valor</li><li>Cuándo se mejora o se retira</li></ul></article>
+<article class="reveal" style="--delay:.45s"><span class="pico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><small>03</small><h3>Sistemas</h3><p class="gov-q">Dónde se construye y dónde queda todo.</p><ul style="--b:1.3s"><li>Herramientas aprobadas por IT</li><li>Una biblioteca de agentes y skills reutilizables</li><li>Un registro de decisiones y pruebas</li><li>Un cuadro de mando de valor y adopción</li></ul></article>
+</div>
+<p class="closing-line">Lo diseñamos con vosotros, lo probamos en las primeras vueltas de SPIRAL y lo dejamos funcionando. <b>Así los equipos pueden seguir creando y construyendo por su cuenta.</b></p>
+</div>
+<footer class="footer"><span>KPMG × Spiralia · AI Forward · Confidencial</span><span class="page"></span></footer>
+</section>
+
+<!-- 28 · Traspaso: de construirlo juntos a construirlo vosotros -->
+<section id="autonomia" class="slide" data-chapter="Autonomía" aria-labelledby="t-autonomia">
+<div class="slide-head"><span class="tag">Autonomía · El traspaso</span><h2 id="t-autonomia">De construirlo juntos<br><em>a construirlo vosotros</em></h2></div>
+<div class="body-content">
+<p class="intro">Con cada vuelta de la espiral, vuestros equipos asumen más y nosotros, menos. El objetivo es que acaben siendo autosuficientes.</p>
+<div class="handover">
+<svg class="ho-svg" viewBox="0 0 1000 232" role="img" aria-label="A medida que avanzan las vueltas de SPIRAL, crece la capacidad de los equipos de KPMG y baja el papel de Spiralia. Ilustrativo.">
+<rect class="band" x="0" y="0" width="333" height="200"/><rect class="band b2" x="333" y="0" width="334" height="200"/><rect class="band" x="667" y="0" width="333" height="200"/>
+<line class="axis" x1="0" x2="1000" y1="200" y2="200"/>
+<path class="ho-spi" pathLength="1" d="M20 33 C 220 38, 380 100, 520 133 S 820 178, 980 183"/>
+<path class="ho-kpmg" pathLength="1" d="M20 185 C 220 178, 380 117, 520 83 S 820 37, 980 28"/>
+<text class="lbl-kpmg" x="980" y="16" text-anchor="end">Capacidad de vuestros equipos</text>
+<text class="lbl-spi" x="980" y="172" text-anchor="end">Papel de Spiralia</text>
+<text class="lbl-x" x="0" y="224">Vueltas de SPIRAL →</text>
+</svg>
+<div class="phases3" data-stagger=".18">
+<div><span>Fase 1</span><h3>Lo construimos juntos</h3><p>Spiralia lidera las primeras vueltas; vuestro equipo aprende haciendo.</p></div>
+<div><span>Fase 2</span><h3>Lo construís con nuestro apoyo</h3><p>Vuestros constructores lideran; nosotros acompañamos y revisamos.</p></div>
+<div><span>Fase 3</span><h3>Lo construís vosotros</h3><p>Equipos autosuficientes, con su propio modelo de gobierno. Nosotros, solo si nos necesitáis.</p></div>
+</div>
+</div>
+</div>
+<footer class="footer"><span>Gráfico ilustrativo: el ritmo de cada fase depende de cada área.</span><span class="page"></span></footer>
+</section>
+
+<!-- 29 · Por dónde empezamos -->
+<section id="empezar" class="slide" data-chapter="Empezar" aria-labelledby="t-empezar">
+<div class="slide-head"><span class="tag">La última gran pregunta</span><h2 id="t-empezar">¿Por dónde<br><em>empezamos?</em></h2></div>
+<div class="body-content">
+<p class="intro">SPIRAL arranca en un lugar concreto. Basta con que se crucen tres condiciones:</p>
+<div class="conditions" data-stagger=".15">
+<div><span>01 · TENSIÓN</span><h3>Un problema que importa</h3><p>Volumen, tiempo, calidad, riesgo o una decisión que hoy limita al área.</p></div>
+<div><span>02 · REALIDAD</span><h3>Acceso al trabajo real</h3><p>Personas, sistemas, datos, excepciones y el criterio del experto; no solo el procedimiento.</p></div>
+<div><span>03 · AUTORIDAD</span><h3>Alguien que pueda cambiarlo</h3><p>Un socio o director que patrocine, decida y, si funciona, lo escale.</p></div>
+</div>
+<p class="start-line">Con eso empezamos: <b>formación del área y primera vuelta de SPIRAL</b> sobre el flujo de trabajo que más pese.</p>
+<p class="installed">¿Dónde se cruzan hoy estas tres condiciones en vuestra área?</p>
+</div>
+<footer class="footer"><span>KPMG × Spiralia · AI Forward · Confidencial</span><span class="page"></span></footer>
+</section>
+
+<!-- 30 · Cierre -->
+<section id="cierre" class="slide video-slide" data-chapter="Empezar" aria-labelledby="t-cierre">
+<div class="scene-media" aria-hidden="true"><img src="assets/closing-poster.jpg" alt=""><video muted loop playsinline preload="none" poster="assets/closing-poster.jpg" data-src="assets/closing-video.mp4" tabindex="-1"></video></div>
+<div class="slide-head"><span class="tag">AI Forward</span><h2 id="t-cierre">La IA ya tiene luz verde<br><em>Falta llevarla al trabajo real</em></h2></div>
+<div class="body-content"><div class="closing-copy"><p>Formar a cada área, entender su día a día, decidir dónde entra la IA, construirla con el equipo, desplegarla con control y dejar a los equipos capaces de seguir solos. Un solo recorrido, con nombre propio: SPIRAL.</p><h3>AI Forward.<br><em>Deployed by design.</em></h3></div></div>
+<footer class="footer"><span>KPMG × Spiralia · AI Forward · Confidencial</span><span class="page"></span></footer>
+</section>
+</main>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const navLinks=[...document.querySelectorAll('#nav nav a')];
+const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+const motionBtn=document.getElementById('motion');
+const progress=document.getElementById('progress');
+const brandTpl=document.getElementById('print-brand-tpl');
+let current=-1, paused=reduced.matches, printing=false;
+const still=()=>paused||reduced.matches||printing;
+
+// Numeración, cabecera de impresión y entradas escalonadas
+slides.forEach((s,i)=>{
+  const page=s.querySelector('.page');
+  if(page)page.textContent=String(i+1).padStart(2,'0')+' / '+slides.length;
+  const brand=brandTpl.content.cloneNode(true);
+  brand.querySelector('b').textContent=s.dataset.chapter;
+  s.prepend(brand);
+  s.querySelectorAll('[data-stagger]').forEach(box=>[...box.children].forEach((el,j)=>{
+    el.classList.add('reveal');el.style.setProperty('--delay',(.15+j*(+box.dataset.stagger)).toFixed(2)+'s');
+  }));
+});
+
+// Preguntas: cada palabra entra por separado
+document.querySelectorAll('.question h2').forEach(h=>{
+  let i=0;
+  const walk=node=>[...node.childNodes].forEach(n=>{
+    if(n.nodeType===3){
+      const frag=document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(part=>{
+        if(!part)return;
+        if(/^\s+$/.test(part)){frag.append(part);return}
+        const w=document.createElement('span');w.className='w';w.style.setProperty('--i',i++);w.textContent=part;frag.append(w);
+      });
+      n.replaceWith(frag);
+    }else if(n.nodeType===1&&n.tagName!=='BR')walk(n);
+  });
+  walk(h);
+  h.closest('.slide').style.setProperty('--after',(i*.065+.45).toFixed(2)+'s');
+});
+
+// Cifras que cuentan hasta su valor
+const numFmt=(v,dec)=>new Intl.NumberFormat('es-ES',{minimumFractionDigits:dec,maximumFractionDigits:dec}).format(v);
+function countUp(slide){
+  slide.querySelectorAll('[data-to]').forEach(el=>{
+    const to=+el.dataset.to,dec=+(el.dataset.dec||0),pre=el.dataset.pre||'';
+    const end=pre+numFmt(to,dec);
+    if(still()){el.textContent=end;return}
+    const t0=performance.now(),dur=1400;
+    const tick=t=>{const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=p<1?pre+numFmt(to*e,dec):end;if(p<1)requestAnimationFrame(tick)};
+    el.textContent=pre+numFmt(0,dec);requestAnimationFrame(tick);
+  });
+}
+
+// Solo se reproduce el vídeo de la pantalla activa. La portada se ve una vez y se queda en su último fotograma.
+function updateMedia(){
+  slides.forEach((s,i)=>s.querySelectorAll('video').forEach(v=>{
+    if(i===current&&!paused&&!document.hidden&&!printing){
+      if(!v.getAttribute('src'))v.src=v.dataset.src;
+      if(!(v.hasAttribute('data-once')&&v.ended))v.play().catch(()=>{if(v.hasAttribute('data-once'))s.classList.add('ended')});
+    }else v.pause();
+  }));
+}
+function updateMotion(){
+  document.documentElement.classList.toggle('motion-paused',paused);
+  document.documentElement.classList.toggle('anim',!still());
+  motionBtn.textContent=paused?'Activar movimiento':'Pausar movimiento';
+  motionBtn.setAttribute('aria-pressed',String(paused));
+  updateMedia();
+}
+function enter(s){s.classList.add('seen','is-active');countUp(s);s.dispatchEvent(new CustomEvent('slide:enter'))}
+function activate(index){
+  if(index===current)return;
+  const prev=slides[current];
+  current=index;
+  if(prev){prev.classList.remove('is-active');prev.dispatchEvent(new CustomEvent('slide:leave'))}
+  const slide=slides[current];
+  enter(slide);
+  navLinks.forEach(a=>a.dataset.chapter===slide.dataset.chapter?a.setAttribute('aria-current','step'):a.removeAttribute('aria-current'));
+  document.getElementById('prev').disabled=current===0;
+  document.getElementById('next').disabled=current===slides.length-1;
+  progress.style.width=((current+1)/slides.length*100)+'%';
+  updateMedia();
+}
+function jump(index){
+  const n=Math.max(0,Math.min(slides.length-1,index));
+  slides[n].scrollIntoView({behavior:still()?'instant':'smooth'});
+  history.replaceState(null,'','#'+slides[n].id);
+}
+function replay(){
+  const s=slides[current];
+  s.classList.remove('is-active');void s.offsetWidth;enter(s);
+  s.querySelectorAll('video').forEach(v=>{if(v.readyState)v.currentTime=0});
+  updateMedia();
+}
+
+// Si una pantalla no cabe en el alto de la ventana, su contenido se reduce con zoom (mínimo 0,74). En móvil, la pantalla crece.
+const zoomOf=el=>parseFloat(el&&el.style.zoom)||1;
+function fit(){
+  slides.forEach(s=>{
+    if(s.classList.contains('portada'))return;
+    const parts=[...s.children].filter(el=>el.matches('.slide-head,.body-content'));
+    parts.forEach(el=>el.style.zoom='');
+    if(matchMedia('(max-width:720px)').matches)return;
+    const cs=getComputedStyle(s),avail=innerHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom)-4;
+    const need=parts.reduce((h,el)=>h+el.getBoundingClientRect().height+parseFloat(getComputedStyle(el).marginBottom),0);
+    if(need>avail){const z=Math.max(.74,avail/need);parts.forEach(el=>el.style.zoom=z.toFixed(3))}
+  });
+}
+let fitTimer=null;
+addEventListener('resize',()=>{clearTimeout(fitTimer);fitTimer=setTimeout(fit,150)});
+document.fonts&&document.fonts.ready.then(fit);
+fit();
+
+const io=new IntersectionObserver(entries=>{
+  for(const e of entries)if(e.isIntersecting)activate(slides.indexOf(e.target));
+},{rootMargin:'-35% 0px -35% 0px',threshold:0});
+slides.forEach(s=>io.observe(s));
+
+document.getElementById('prev').onclick=()=>jump(current-1);
+document.getElementById('next').onclick=()=>jump(current+1);
+document.getElementById('replay').onclick=replay;
+motionBtn.onclick=()=>{paused=!paused;updateMotion();slides[current]&&slides[current].dispatchEvent(new CustomEvent('slide:enter'))};
+document.addEventListener('visibilitychange',updateMedia);
+addEventListener('beforeprint',()=>{printing=true;updateMotion()});
+addEventListener('afterprint',()=>{printing=false;updateMotion()});
+reduced.addEventListener('change',()=>{paused=reduced.matches;updateMotion()});
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey||e.metaKey||e.altKey||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;
+  if(['ArrowRight','ArrowDown','PageDown'].includes(e.key)){e.preventDefault();jump(current+1)}
+  if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();jump(current-1)}
+  if(e.key==='Home'){e.preventDefault();jump(0)}
+  if(e.key==='End'){e.preventDefault();jump(slides.length-1)}
+  if(e.key.toLowerCase()==='m'){paused=!paused;updateMotion();slides[current]&&slides[current].dispatchEvent(new CustomEvent('slide:enter'))}
+  if(e.key.toLowerCase()==='a')replay();
+});
+
+// Portada: fondo oscuro mientras suena el vídeo; el claim aparece cuando termina en su último fotograma
+(()=>{const p=document.getElementById('inicio'),v=p&&p.querySelector('video');if(!v)return;
+  v.addEventListener('play',()=>{p.classList.remove('ended');p.classList.add('playing')});
+  v.addEventListener('ended',()=>{p.classList.remove('playing');p.classList.add('ended')});
+  v.addEventListener('pause',()=>p.classList.remove('playing'));
+})();
+
+// 06 · Los tres pasos del procedimiento «explotan» en la maraña del trabajo real
+(()=>{
+  const sec=document.getElementById('realidad');if(!sec)return;
+  const origin=sec.querySelectorAll('.proc-step')[1],chips=[...sec.querySelectorAll('.mess')];
+  const settle=()=>chips.forEach(c=>{c.style.transition='none';c.style.transform='none';c.style.opacity=''});
+  function burst(){
+    settle();
+    if(still()||matchMedia('(max-width:720px)').matches)return;
+    const o=origin.getBoundingClientRect(),ox=o.left+o.width/2,oy=o.top+o.height/2,z=zoomOf(sec.querySelector('.body-content'));
+    chips.forEach(c=>{const r=c.getBoundingClientRect();c.style.transform=`translate(${((ox-r.left-r.width/2)/z).toFixed(1)}px,${((oy-r.top-r.height/2)/z).toFixed(1)}px) scale(.3)`;c.style.opacity=0});
+    void sec.offsetWidth;
+    chips.forEach((c,i)=>{const d=(.75+i*.07).toFixed(2);c.style.transition=`transform 1.1s var(--ease) ${d}s,opacity .45s ease ${d}s`;c.style.transform='none';c.style.opacity=1});
+  }
+  sec.addEventListener('slide:enter',burst);
+  sec.addEventListener('slide:leave',settle);
+})();
+
+// 11 · Nube de palabras: al llegar, las palabras flotan desordenadas y, a los pocos segundos, vuelan a su paso de SPIRAL
+(()=>{
+  const sec=document.getElementById('nube');if(!sec)return;
+  const stage=sec.querySelector('.kw-stage'),kws=[...stage.querySelectorAll('.kw')],def=sec.querySelector('.kw-def'),btn=sec.querySelector('.kw-toggle');
+  const rnd=i=>{const x=Math.sin(i*12.9898+78.233)*43758.5453;return x-Math.floor(x)};
+  let timer=null;
+  kws.forEach((k,i)=>k.style.setProperty('--n',i));
+  function place(){
+    kws.forEach(k=>{k.style.transition='none';k.style.transform='none'});
+    const sr=stage.getBoundingClientRect(),z=zoomOf(sec.querySelector('.body-content')),narrow=sr.width/z<700,cols=narrow?3:7,rows=Math.ceil(kws.length/cols);
+    const cells=[...Array(cols*rows).keys()].sort((a,b)=>rnd(a+3)-rnd(b+3)),cw=sr.width/cols,ch=sr.height/rows;
+    kws.forEach((k,i)=>{
+      const r=k.getBoundingClientRect(),c=cells[i],sc=(narrow?[1,1.1,1.2]:[1,1.22,1.55])[(+k.dataset.noise||1)-1],m=r.width*(sc-1)/2+4;
+      const tx=Math.min(Math.max((c%cols)*cw+(cw-r.width)/2+(rnd(i+11)-.5)*cw*(narrow?.15:.35),m),sr.width-r.width-m),ty=Math.floor(c/cols)*ch+(ch-r.height)/2+(rnd(i+29)-.5)*ch*.45;
+      k.style.transform=`translate(${((tx-(r.left-sr.left))/z).toFixed(1)}px,${((ty-(r.top-sr.top))/z).toFixed(1)}px) scale(${sc})`;
+    });
+  }
+  function cloud(){stage.dataset.state='cloud';place();btn.innerHTML='Ordenar ahora <span aria-hidden="true">→</span>'}
+  function order(){
+    stage.dataset.state='order';
+    kws.forEach((k,i)=>{k.style.transition=still()?'none':`transform 1.15s var(--ease) ${(i*.03).toFixed(2)}s,background .5s,border-color .5s,color .5s`;k.style.transform='none'});
+    btn.innerHTML='Ver la nube otra vez <span aria-hidden="true">↺</span>';
+  }
+  function run(){clearTimeout(timer);if(still()){order();return}cloud();timer=setTimeout(order,3000)}
+  sec.addEventListener('slide:enter',run);
+  sec.addEventListener('slide:leave',()=>{clearTimeout(timer);order()});
+  btn.addEventListener('click',()=>{clearTimeout(timer);if(stage.dataset.state==='order'&&!still()){cloud();timer=setTimeout(order,3000)}else order()});
+  kws.forEach(k=>{
+    const show=()=>{def.innerHTML=`<b>${k.textContent}</b>${k.dataset.def} <span>Es como ${k.dataset.like}</span>`;kws.forEach(o=>o.classList.toggle('on',o===k))};
+    k.addEventListener('mouseenter',show);k.addEventListener('focus',show);k.addEventListener('click',show);
+  });
+  addEventListener('resize',()=>{if(stage.dataset.state==='cloud')place()});
+  addEventListener('beforeprint',()=>{clearTimeout(timer);order()});
+})();
+
+// 13 · Cada vuelta: experto y FDE recorren las seis estaciones; al terminar, la espiral sigue
+(()=>{
+  const sec=document.getElementById('vuelta');if(!sec)return;
+  const cyc=sec.querySelector('.cycle'),st=[...cyc.querySelectorAll('.station')];
+  let timer=null;
+  const set=n=>{st.forEach((s,i)=>s.classList.toggle('on',i<n));cyc.style.setProperty('--pos',n<1?0:(n-1)/(st.length-1));n>=st.length?cyc.setAttribute('data-done',''):cyc.removeAttribute('data-done')};
+  function stop(){clearTimeout(timer);set(st.length)}
+  function run(){
+    clearTimeout(timer);
+    if(still()){set(st.length);return}
+    let n=0;set(0);
+    const next=()=>{n++;set(n);timer=setTimeout(n<st.length?next:()=>{if(sec.classList.contains('is-active'))run()},n<st.length?1150:4500)};
+    timer=setTimeout(next,600);
+  }
+  sec.addEventListener('slide:enter',run);
+  sec.addEventListener('slide:leave',stop);
+  addEventListener('beforeprint',stop);
+})();
+
+// 25 · Caso: el documento recorre el proceso de hoy (con esperas y un retrabajo) y el rediseñado, que va dejando su registro
+(()=>{
+  const sec=document.getElementById('caso');if(!sec)return;
+  const [old,neu]=[...sec.querySelectorAll('.lane')],logs=[...sec.querySelectorAll('.log li')],btn=sec.querySelector('.case-replay');
+  const os=[...old.querySelectorAll('li')],ns=[...neu.querySelectorAll('li')];
+  let timers=[];
+  const at=(ms,fn)=>timers.push(setTimeout(fn,ms));
+  const go=(lane,items,k)=>{lane.style.setProperty('--k',k);items.forEach((li,i)=>li.classList.toggle('at',i===k));items[k].classList.add('seen')};
+  function finish(){
+    timers.forEach(clearTimeout);timers=[];
+    sec.classList.remove('playing');
+    [old,neu].forEach(l=>{l.classList.remove('going','back');l.classList.add('done');l.style.setProperty('--k',5)});
+    [...os,...ns].forEach(li=>{li.classList.add('seen');li.classList.remove('at')});
+    logs.forEach(li=>li.classList.add('on'));
+  }
+  function run(){
+    finish();
+    if(still())return;
+    sec.classList.add('playing');
+    [old,neu].forEach(l=>{l.classList.remove('done');l.style.setProperty('--k',0)});
+    [...os,...ns].forEach(li=>li.classList.remove('seen','at'));
+    logs.forEach(li=>li.classList.remove('on'));
+    let t=500;
+    at(t,()=>old.classList.add('going'));
+    [0,1,2,3,4,3,4,5].forEach((k,j)=>{
+      at(t,()=>{go(old,os,k);old.classList.toggle('back',j===5)});
+      t+=720+((j===2||j===7)?900:0);
+    });
+    at(t,()=>{old.classList.add('done');old.classList.remove('going','back');os.forEach(li=>li.classList.remove('at'))});
+    t+=500;
+    at(t,()=>neu.classList.add('going'));
+    const log=[[0],[1],[2],[3],[4,5],[6,7]];
+    ns.forEach((li,k)=>{at(t,()=>{go(neu,ns,k);log[k].forEach(i=>logs[i]&&logs[i].classList.add('on'))});t+=680});
+    at(t,()=>{neu.classList.add('done');neu.classList.remove('going');ns.forEach(li=>li.classList.remove('at'));sec.classList.remove('playing')});
+  }
+  sec.addEventListener('slide:enter',run);
+  sec.addEventListener('slide:leave',finish);
+  btn.addEventListener('click',run);
+  addEventListener('beforeprint',finish);
+})();
+
+updateMotion();
+activate(Math.max(0,slides.findIndex(s=>'#'+s.id===location.hash)));
+</script>
+</body>
+</html>
